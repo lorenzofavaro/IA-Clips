@@ -66,6 +66,12 @@ momento non possono esserci più di venti caselle marcate “guessed”.
 Lo scopo del gioco è quindi marcare tutte le caselle che contengono una nave come guessed, o
 eventualmente averle colpite con _fire_.
 
+## Struttura del progetto
+- `battlemap` contiene la classe Java che genera le mappe
+- `utils` contiene `Strategie.txt`, documento di base della stesura delle strategie.
+
+È importante notare che sono stati definiti 3 agenti, che adottano differenti strategie di gioco, dalla più alla meno semplice.
+
 ## Modellazione della conoscenza
 La conoscenza è stata modellata definendo per ogni cella del campo di gioco, alcuni fatti non ordinati:
 - `cell_to_see` è utilizzato per definire su quali celle agire tramite una _guess_/_fire_.
