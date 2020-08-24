@@ -50,9 +50,7 @@ cioè il vostro sistema esperto potrebbe tornare sui suoi passi con il comando _
 Il comando _solve_ è da usarsi solo quando il vostro sistema esperto ritiene di aver risolto il gioco,
 l’azione termina il gioco attivando il calcolo del punteggio secondo la seguente formula:
 
-```
-( 10 ∗ fok + 10 ∗ gok + 15 ∗ sink )−( 25 ∗ fko + 15 ∗ gko + 10 ∗ safe )
-```
+`( 10 ∗ fok + 10 ∗ gok + 15 ∗ sink )−( 25 ∗ fko + 15 ∗ gko + 10 ∗ safe )`
 dove:
 
 - fok è il numero di azioni fire che sono andate a segno
@@ -68,4 +66,9 @@ momento non possono esserci più di venti caselle marcate “guessed”.
 Lo scopo del gioco è quindi marcare tutte le caselle che contengono una nave come guessed, o
 eventualmente averle colpite con _fire_.
 
-
+## Modellazione della conoscenza
+La conoscenza è stata modellata definendo per ogni cella del campo di gioco, alcuni fatti non ordinati:
+- `cell_to_see` è utilizzato per definire su quali celle agire tramite una guess/fire.
+- `cell_considered` marca la cella come già presa in esame in modo che non venga più considerata.
+- `cell_updated` riconosce la cella come facente parte di una nave trovata.
+- `cell_watered` segna le celle a cui è stata già aggiunta l'acqua intorno in quanto riconosciuta come parte di una nave verticale/orizzontale.
