@@ -75,6 +75,13 @@ eventualmente averle colpite con _fire_.
 I restanti file sono stati creati dal professore.
 
 ## Modellazione della conoscenza
+
+### Agente 1
+
+
+### Agente 2
+
+### Agente 3
 La conoscenza è stata modellata definendo per ogni cella del campo di gioco, alcuni fatti non ordinati:
 - `cell_to_see` è utilizzato per definire su quali celle agire tramite una _guess_/_fire_.
 - `cell_considered` marca la cella come già presa in esame in modo che non venga più considerata.
