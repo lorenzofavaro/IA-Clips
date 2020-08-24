@@ -67,10 +67,12 @@ Lo scopo del gioco è quindi marcare tutte le caselle che contengono una nave co
 eventualmente averle colpite con _fire_.
 
 ## Struttura del progetto
-- `battlemap` contiene la classe Java che genera le mappe
-- `utils` contiene `Strategie.txt`, documento di base della stesura delle strategie.
+- `battlemap` contiene tutto il necessario per la generazione di mappe da gioco.
+- `utils` contiene `Strategie.txt`, documento di base della stesura delle strategie ed anche alcuni file secondari.
+- Sono stati modellati 3 agenti, differenti per il grado di complessità della strategia da loro utilizzata: `3_Agent.clp`, `3_Agent_1.clp` e `3_Agent_2.clp`.
+- Le mappe generate per il testing sono `2_mapEnvironment.clp` e `2_mapEnvironment2.clp`
 
-È importante notare che sono stati definiti 3 agenti, che adottano differenti strategie di gioco, dalla più alla meno semplice.
+I restanti file sono stati creati dal professore.
 
 ## Modellazione della conoscenza
 La conoscenza è stata modellata definendo per ogni cella del campo di gioco, alcuni fatti non ordinati:
