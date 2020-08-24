@@ -68,7 +68,12 @@ eventualmente averle colpite con _fire_.
 
 ## Modellazione della conoscenza
 La conoscenza è stata modellata definendo per ogni cella del campo di gioco, alcuni fatti non ordinati:
-- `cell_to_see` è utilizzato per definire su quali celle agire tramite una guess/fire.
+- `cell_to_see` è utilizzato per definire su quali celle agire tramite una _guess_/_fire_.
 - `cell_considered` marca la cella come già presa in esame in modo che non venga più considerata.
-- `cell_updated` riconosce la cella come facente parte di una nave trovata.
+- `cell_updated` è usata per segnare le celle che sono state oggetto di _guess_/_fire_.
 - `cell_watered` segna le celle a cui è stata già aggiunta l'acqua intorno in quanto riconosciuta come parte di una nave verticale/orizzontale.
+- `boat_decremented` riconosce la cella come facente parte in una nave orizzontale/verticale.
+- `action_base_done` è usato per tenere conto che l'azione di base dei _last_ (celle terminali di una nave) è stata effettuata.
+- `border` rappresenta il bordo del campo da gioco.
+- `fired` segna la cella su cui è stata effettuata una _fire_.
+- `guessed` segna la cella su cui è stata effettuata una _guess_.
