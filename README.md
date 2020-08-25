@@ -102,7 +102,7 @@ Sfrutta maggiormente i dati concessi dall'ambiente, come la disposizione delle c
 
 Inoltre memorizza l'informazione relativa al numero di navi abbattute e rimanenti, migliorando l'individuazione delle celle rimanenti utilizzando quindi meno _fires_.
 
-Per maggiore chiarezza, consultare la [Strategia 2](https://github.com/lorenzofavaro/IA-Clips/blob/master/utils/Strategia2.txt) relativa a questo agente.
+Per maggiore chiarezza, consultare la [strategia](https://github.com/lorenzofavaro/IA-Clips/blob/master/utils/Strategia2.txt) relativa a questo agente.
 
 **Conoscenza**
 
