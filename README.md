@@ -68,7 +68,7 @@ eventualmente averle colpite con _fire_.
 
 ## Struttura del progetto
 - `battlemap` contiene tutto il necessario per la generazione di mappe da gioco.
-- `utils` contiene `Strategie.txt`, documento di base della stesura delle strategie ed anche alcuni file secondari.
+- `utils` contiene le strategie utilizzate dai tre agenti ed anche alcuni file secondari.
 - Sono stati modellati 3 agenti, differenti per il grado di complessità della strategia da loro utilizzata: `3_Agent.clp`, `3_Agent_1.clp` e `3_Agent_2.clp`.
 - Le mappe generate per il testing sono `2_mapEnvironment.clp` e `2_mapEnvironment2.clp`
 
@@ -97,6 +97,8 @@ Il secondo agente adotta una strategia più complessa.
 Sfrutta maggiormente i dati concessi dall'ambiente, come la disposizione delle celle conosciute inizialmente. Infatti prende decisioni in base alle celle di cui è venuto a conoscenza, ad eccezione di `water`. Distingue tra pezzi diversi cercando di identificare il tipo e l'orientamento della nave attraverso le informazioni conseguenti alle _fires_. Le _guesses_ vengono effettuate solamente in condizione di certezza.
 
 Inoltre memorizza l'informazione relativa al numero di navi abbattute e rimanenti, migliorando l'individuazione delle celle rimanenti utilizzando quindi meno _fires_.
+
+Per maggiore chiarezza, consultare la [Strategia 2](https://github.com/lorenzofavaro/IA-Clips/blob/master/utils/Strategia2.txt)
 
 ## Agente 3
 La conoscenza è stata modellata definendo per ogni cella del campo di gioco, alcuni fatti non ordinati:
