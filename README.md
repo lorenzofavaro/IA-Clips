@@ -78,6 +78,7 @@ I restanti file sono stati creati dal professore.
 Il primo agente adotta una strategia molto semplice. Utilizzando i dati del campo da gioco concessi dall'ambiente, e quindi il numero di pezzi di nave presenti per ogni riga e colonna (k-per-row e k-per-col), calcola le prime 20 celle più probabili ed effettua una _guess_. Non effettua alcuna _fire_ in quanto la penalità in caso di _miss_ sarebbe più alta.
 
 **Conoscenza**
+
 La conoscenza è stata modellata definendo il fatto non ordinato `cell_prob` che misura la probabilità di trovare un pezzo di nave in una specifica cella. Viene asserito un nuovo fatto ordinato per tutte le celle.
 
 **Regole di expertise**
