@@ -103,11 +103,7 @@ Per maggiore chiarezza, consultare la [Strategia 2](https://github.com/lorenzofa
 **Conoscenza**
 
 Sono stati definiti varie tipologie di fatti per la gestione della conoscenza, tra cui:
-- `boats_to_find` che memorizza per ogni tipologia di nave, quante ne devono essere ancora trovate. Ad inizio gioco viene definito il seguente fatto:
-  - `(boat_4 1)`
-  - `(boat_3 2)`
-  - `(boat_2 3)`
-  - `(boat_1 4)`
+- `boats_to_find` che memorizza per ogni tipologia di nave, quante ne devono essere ancora trovate. Ad inizio gioco viene definito il seguente fatto: `(deffacts total_boats (boats_to_find (boat_4 1) (boat_3 2) (boat_2 3) (boat_1 4)))`
 - `cell_prob` rappresenta per ogni cella la probabilità che contenga un pezzo di nave.
 - `cell_to_see` è utilizzato per definire su quali celle agire tramite una _guess_/_fire_.
 - `cell_considered` marca la cella come già presa in esame in modo che non venga più considerata.
