@@ -1,0 +1,61 @@
+1) CELLE CONOSCIUTE BOAT
+
+IF top/bottom/left/right
+    IF nave_da_4 affondata AND navi_da_3 affondate                                          AND not(navi_da_2 affondate)
+        Guess su cella -1
+        incremento contatore navi_da_2 affondate
+    ELSE IF nave_da_4 affondata AND navi_da_2 affondate                                     AND not(navi_da_3 affondate)
+        Guess su cella -1
+        Guess su cella -2
+        incremento contatore navi_da_3 affondate
+    ELSE IF nave_da_4 affondata                                                             AND not(navi_da_2 affondate) AND not(navi_da_3 affondate)
+        Guess su cella -1
+        Fire su cella -2
+        IF cella colpita water
+            incremento contatore navi_da_2 affondate
+        ELSE
+            incremento contatore navi_da_3 affondate
+    ELSE IF navi_da_3 affondate AND navi_da_2 affondate                                     AND not(navi_da_4 affondate)
+        Guess su cella -1
+        Guess su cella -2
+        Guess su cella -3
+        incremento contatore nave_da_4 affondata
+    ELSE IF navi_da_3 affondate                                                             AND not(navi_da_2 affondate) AND not(nave_da_4 affondate)
+        Fire su cella -1
+        IF cella colpita last
+            incremento contatore navi_da_2 affondate
+        ELSE
+            Guess su cella -2
+            Guess su cella -3
+            incremento contatore navi_da_4 affondate
+    ELSE IF navi_da_2 affondate                                                             AND not(navi_da_3 affondate) AND not(nave_da_4 affondate)
+        Guess su cella -1
+        Guess su cella -2
+        Fire su cella -3
+        IF cella colpita last
+            Guess su cella -3
+            incremento contatore navi_da_4 affondate
+        ELSE
+            incremento contatore navi_da_3 affondate
+    ELSE IF not(navi_da_2 affondate) AND not(navi_da_3 affondate) AND not(nave_da_4 affondata)
+        Guess su cella -1
+        Fire su cella -2
+        IF cella colpita water
+            incremento contatore navi_da_2 affondate
+        ELSE IF cella colpita last
+            incremento contatore navi_da_3 affondate
+        ELSE IF cella colpita middle
+            Guess su cella -3
+            incremento contatore nave_da_4 affondata
+
+ELSE IF middle
+    Fire su cella adiacente -1 con la probabilità maggiore
+    IF cella colpita last
+        Guess cella adiacente opposta (50% che sia una nave da 3 o da 4)
+
+
+2) CALCOLO CELLA PIU' PROBABILE NON ANCORA VISTA CHE SIA LONTANA DI ALMENO UNA CASELLA DA CELLE GIA' VISTE (fino ad esaurimento fire)
+
+Fire su cella scelta
+IF cella colpita != water
+Torna a casistica cella conosciuta

@@ -1,0 +1,1 @@
+Guess delle celle [x,y] tali per cui boats[x] + boats[y] == MAX, fino ad arrivare a 20

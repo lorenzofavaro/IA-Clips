@@ -19,7 +19,7 @@
 	(slot x) (slot y)
 )
 
-; Template per l'aggiornamento delle boat trovate
+; Template per l'aggiornamento delle celle oggetto di azione
 (deftemplate cell_updated
 	(slot x) (slot y)
 )

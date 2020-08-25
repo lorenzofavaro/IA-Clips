@@ -27,7 +27,7 @@
 
 (defrule max_guesses
 	(status (step ?s) (currently running))
-	?mvs <- (moves (guesses ?ng &:(eq ?ng 0)))
+	?mvs <- (moves (guesses 0))
 =>
 	(assert (exec (step ?s) (action solve)))
 	(pop-focus)
