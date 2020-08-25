@@ -82,11 +82,13 @@ Il primo agente adotta una strategia molto semplice. Utilizzando i dati del camp
 La conoscenza è stata modellata definendo il fatto non ordinato `cell_prob` che misura la probabilità di trovare un pezzo di nave in una specifica cella. Viene asserito un nuovo fatto ordinato per tutte le celle.
 
 **Regole di expertise**
+
 Le regole di expertise importanti sono due:
 - `calc_cell_values` calcola per ogni cella di gioco, la probabilità che contenga un pezzo di nave.
 - `guess_best` utilizza la `cell_prob` di maggior valore e ne effettua la _guess_.
 
 **Limiti**
+
 Ovviamente, adottando una strategia molto semplicistica, che non tiene conto di molti dati messi a disposizione dall'ambiente, i suoi limiti sono molti. Come ci si aspetta ottiene punteggi di basso valore.
 
 ## Agente 2
