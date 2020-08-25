@@ -75,11 +75,11 @@ eventualmente averle colpite con _fire_.
 I restanti file sono stati creati dal professore.
 
 ## Agente 1
-Il primo agente adotta una strategia molto semplice. Utilizzando i dati del campo da gioco concessi dall'ambiente, e quindi il numero di pezzi di nave presenti per ogni riga e colonna (k-per-row e k-per-col), calcola le prime 20 celle più probabili ed effettua una _guess_. Non effettua alcuna _fire_ in quanto la penalità in caso di _miss_ sarebbe più alta.
+Il primo agente adotta una strategia molto semplice. Utilizzando i dati del campo da gioco concessi dall'ambiente, e quindi il numero di pezzi di nave presenti per ogni riga e colonna (`k-per-row` e `k-per-col`), calcola le prime 20 celle più probabili ed effettua una _guess_. Non effettua alcuna _fire_ in quanto la penalità in caso di _miss_ sarebbe più alta.
 
 **Conoscenza**
 
-La conoscenza è stata modellata definendo il fatto non ordinato `cell_prob` che misura la probabilità di trovare un pezzo di nave in una specifica cella. Viene asserito un nuovo fatto ordinato per tutte le celle.
+La conoscenza è stata modellata definendo il template `cell_prob` che misura la probabilità di trovare un pezzo di nave in una specifica cella. Viene asserito un nuovo fatto ordinato per tutte le celle.
 
 **Regole di expertise**
 
@@ -89,9 +89,14 @@ Le regole di expertise importanti sono due:
 
 **Limiti**
 
-Ovviamente, adottando una strategia molto semplicistica, che non tiene conto di molti dati messi a disposizione dall'ambiente, i suoi limiti sono molti. Come ci si aspetta ottiene punteggi di basso valore.
+Ovviamente, adottando una strategia così semplice, che non tiene conto di molti dati messi a disposizione dall'ambiente, i suoi limiti sono molti. Come ci si aspetta ottiene punteggi di basso valore.
 
 ## Agente 2
+Il secondo agente adotta una strategia più complessa.
+
+Sfrutta maggiormente i dati concessi dall'ambiente, come la disposizione delle celle conosciute inizialmente. Infatti prende decisioni in base alle celle di cui è venuto a conoscenza, ad eccezione di `water`. Distingue tra pezzi diversi cercando di identificare il tipo e l'orientamento della nave attraverso le informazioni conseguenti alle _fires_. Le _guesses_ vengono effettuate solamente in condizione di certezza.
+
+Inoltre memorizza l'informazione relativa al numero di navi abbattute e rimanenti, migliorando l'individuazione delle celle rimanenti utilizzando quindi meno _fires_.
 
 ## Agente 3
 La conoscenza è stata modellata definendo per ogni cella del campo di gioco, alcuni fatti non ordinati:
