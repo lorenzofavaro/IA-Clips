@@ -74,14 +74,23 @@ eventualmente averle colpite con _fire_.
 
 I restanti file sono stati creati dal professore.
 
-## Modellazione della conoscenza
+## Agente 1
+Il primo agente adotta una strategia molto semplice. Utilizzando i dati del campo da gioco concessi dall'ambiente, e quindi il numero di pezzi di nave presenti per ogni riga e colonna (k-per-row e k-per-col), calcola le prime 20 celle più probabili ed effettua una _guess_. Non effettua alcuna _fire_ in quanto la penalità in caso di _miss_ sarebbe più alta.
 
-### Agente 1
+**Conoscenza**
+La conoscenza è stata modellata definendo il fatto non ordinato `cell_prob` che misura la probabilità di trovare un pezzo di nave in una specifica cella. Viene asserito un nuovo fatto ordinato per tutte le celle.
 
+**Regole di expertise**
+Le regole di expertise importanti sono due:
+- `calc_cell_values` calcola per ogni cella di gioco, la probabilità che contenga un pezzo di nave.
+- `guess_best` utilizza la `cell_prob` di maggior valore e ne effettua la _guess_.
 
-### Agente 2
+**Limiti**
+Ovviamente, adottando una strategia molto semplicistica, che non tiene conto di molti dati messi a disposizione dall'ambiente, i suoi limiti sono molti. Come ci si aspetta ottiene punteggi di basso valore.
 
-### Agente 3
+## Agente 2
+
+## Agente 3
 La conoscenza è stata modellata definendo per ogni cella del campo di gioco, alcuni fatti non ordinati:
 - `cell_to_see` è utilizzato per definire su quali celle agire tramite una _guess_/_fire_.
 - `cell_considered` marca la cella come già presa in esame in modo che non venga più considerata.
