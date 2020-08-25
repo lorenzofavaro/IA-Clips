@@ -106,7 +106,7 @@ Per maggiore chiarezza, consultare la [Strategia 2](https://github.com/lorenzofa
 
 **Conoscenza**
 
-Sono stati definite varie tipologie di fatti per la gestione della conoscenza, tra cui:
+Sono state definite varie tipologie di fatti per la gestione della conoscenza, tra cui:
 - `boats_to_find` che memorizza per ogni tipologia di nave, quante ne devono essere ancora trovate. Ad inizio gioco viene così definito: `(deffacts total_boats (boats_to_find (boat_4 1) (boat_3 2) (boat_2 3) (boat_1 4)))`.
 - `cell_prob` rappresenta per ogni cella la probabilità che contenga un pezzo di nave.
 - `cell_to_see` è utilizzato per definire su quali celle agire tramite una _guess_/_fire_.
@@ -115,7 +115,13 @@ Sono stati definite varie tipologie di fatti per la gestione della conoscenza, t
 
 **Regole di expertise**
 
-La regola più importante è `action_to_do` che interviene appena un fatto `cell_to_see` viene asserito ed effettua l'azione specificata sulla cella specificata.
+La regola più importante è `action_to_do` (infatti ha salience 30) che interviene appena un fatto `cell_to_see` viene asserito ed effettua l'azione specificata sulla cella specificata. Il fatto ordinato `cell_to_see` viene asserito dall'agente in base alla situazione in cui si trova.
+
+Sono presenti alcune regole che gestiscono ciascuna una diversa situazione, come ad esempio nel caso di `r43` che definisce l'azione da effettuare nel caso in cui siano state affondate le navi da 4 e 3 pezzi e si sia a conoscenza di un pezzo di nave terminale. Per alcune situazioni di questo tipo, sono state definite delle regole ausiliarie (con il suffisso `_aux`) poichè non è sufficiente singola azione.
+
+Nel caso in cui l'agente non abbia dati utili da gestire, viene attivata la regola `unknown` che cerca di individuare nuove navi effettuando _fires_ sulle celle più probabili, sfruttando lo stesso meccanismo del primo agente.
+
+Infine, l'agente termina attraverso la regola `out_of_fires` non appena esaurisce tutte le _fires_ a sua disposizione.
 
 **Funzioni**
 
