@@ -87,6 +87,10 @@ Le regole di expertise importanti sono due:
 - `calc_cell_values` calcola per ogni cella di gioco, la probabilità che contenga un pezzo di nave.
 - `guess_best` utilizza la `cell_prob` di maggior valore e ne effettua la _guess_.
 
+**Funzioni**
+
+Sono state utilizzate due funzioni: `greater_than`, ossia un comparatore tra due fatti, in questo caso `cell_prob`; `find_max` che permette di trovare la cella con probabilità maggiore. 
+
 **Limiti**
 
 Ovviamente, adottando una strategia così semplice, che non tiene conto di molti dati messi a disposizione dall'ambiente, i suoi limiti sono molti. Come ci si aspetta ottiene punteggi di basso valore.
@@ -102,7 +106,7 @@ Per maggiore chiarezza, consultare la [Strategia 2](https://github.com/lorenzofa
 
 **Conoscenza**
 
-Sono stati definiti varie tipologie di fatti per la gestione della conoscenza, tra cui:
+Sono stati definite varie tipologie di fatti per la gestione della conoscenza, tra cui:
 - `boats_to_find` che memorizza per ogni tipologia di nave, quante ne devono essere ancora trovate. Ad inizio gioco viene così definito: `(deffacts total_boats (boats_to_find (boat_4 1) (boat_3 2) (boat_2 3) (boat_1 4)))`.
 - `cell_prob` rappresenta per ogni cella la probabilità che contenga un pezzo di nave.
 - `cell_to_see` è utilizzato per definire su quali celle agire tramite una _guess_/_fire_.
@@ -110,6 +114,10 @@ Sono stati definiti varie tipologie di fatti per la gestione della conoscenza, t
 - `rule_in_progress` è utile all'agente a riconoscere se è in corso una sequenza di azioni specifica, in modo da non interromperla.
 
 **Regole di expertise**
+
+La regola più importante è `action_to_do` che interviene appena un fatto `cell_to_see` viene asserito ed effettua l'azione specificata sulla cella specificata.
+
+**Funzioni**
 
 
 **Limiti**
