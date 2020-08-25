@@ -125,8 +125,8 @@ Infine, l'agente termina attraverso la regola `out_of_fires` non appena esaurisc
 
 **Funzioni**
 Si è cercato di limitare il numero di funzioni al minimo, quelle più importanti sono le seguenti:
-- `next_action(?action ?x ?y ?content ?diff)` che semplifica l'esecuzione della `action` nel caso in cui si stia trattando un pezzo di nave terminale. Infatti prendendo in input il `content` della cella e le sue coordinate, calcola la cella a distanza `diff` evitando di gestire la diversità di ogni pezzo che si stia trattando in ogni regola.
-- `max_prob_neighbour(?x ?y)`
+- `next_action(?action ?x ?y ?content ?diff)` semplifica l'esecuzione della `action` nel caso in cui si stia trattando un pezzo di nave terminale. Infatti prendendo in input il `content` della cella e le sue coordinate, calcola la cella a distanza `diff` evitando di gestire la diversità di ogni pezzo che si sta trattando in ogni regola.
+- `max_prob_neighbour(?x ?y)` è utilizzato nel caso in cui l'agente sia a conoscenza di una cella il cui `content` è `middle`. In questo caso l'agente calcola in quale delle quattro celle circostanti è più probabile che si trovi un altro pezzo di nave, individuando così l'orientamento della stessa. Per adempiere al compito utilizza ancora una volta i dati `k-per-row` e `k-per-col`.
 
 **Limiti**
 
