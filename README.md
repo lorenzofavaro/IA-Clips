@@ -98,7 +98,16 @@ Sfrutta maggiormente i dati concessi dall'ambiente, come la disposizione delle c
 
 Inoltre memorizza l'informazione relativa al numero di navi abbattute e rimanenti, migliorando l'individuazione delle celle rimanenti utilizzando quindi meno _fires_.
 
-Per maggiore chiarezza, consultare la [Strategia 2](https://github.com/lorenzofavaro/IA-Clips/blob/master/utils/Strategia2.txt)
+Per maggiore chiarezza, consultare la [Strategia 2](https://github.com/lorenzofavaro/IA-Clips/blob/master/utils/Strategia2.txt) relativa a questo agente.
+
+**Conoscenza**
+
+
+**Regole di expertise**
+
+
+**Limiti**
+
 
 ## Agente 3
 La conoscenza è stata modellata definendo per ogni cella del campo di gioco, alcuni fatti non ordinati:
