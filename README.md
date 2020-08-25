@@ -89,7 +89,7 @@ Le regole di expertise importanti sono due:
 
 **Funzioni**
 
-Sono state utilizzate due funzioni: `greater_than`, ossia un comparatore tra due fatti, in questo caso `cell_prob`; `find_max` che permette di trovare la cella con probabilità maggiore. 
+Sono state utilizzate due funzioni: `greater_than(?f1 ?f2)`, ossia un comparatore tra due fatti, in questo caso `cell_prob`; `find_max(?template ?predicate)` che permette di trovare la cella con probabilità maggiore. 
 
 **Limiti**
 
@@ -124,7 +124,9 @@ Nel caso in cui l'agente non abbia dati utili da gestire, viene attivata la rego
 Infine, l'agente termina attraverso la regola `out_of_fires` non appena esaurisce tutte le _fires_ a sua disposizione.
 
 **Funzioni**
-
+Si è cercato di limitare il numero di funzioni al minimo, quelle più importanti sono le seguenti:
+- `next_action(?action ?x ?y ?content ?diff)` che semplifica l'esecuzione della `action` nel caso in cui si stia trattando un pezzo di nave terminale. Infatti prendendo in input il `content` della cella e le sue coordinate, calcola la cella a distanza `diff` evitando di gestire la diversità di ogni pezzo che si stia trattando in ogni regola.
+- `max_prob_neighbour(?x ?y)`
 
 **Limiti**
 
