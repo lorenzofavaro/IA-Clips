@@ -137,6 +137,8 @@ Divide il suo processo in due macrofasi:
     1. Da k-cell
     2. Senza evidenze
 
+Per maggiore chiarezza, consultare la [strategia](https://github.com/lorenzofavaro/IA-Clips/blob/master/utils/Strategia3.txt) relativa a questo agente.
+
 #### Conoscenza
 La conoscenza è stata modellata definendo per ogni cella del campo di gioco alcune tipologie di fatti:
 - `cell_to_see` è utilizzato per definire su quali celle agire tramite una _guess_/_fire_.
