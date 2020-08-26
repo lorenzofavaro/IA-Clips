@@ -124,14 +124,19 @@ Nel caso in cui l'agente non abbia dati utili da gestire, viene attivata la rego
 Infine, l'agente termina attraverso la regola `out_of_fires` non appena esaurisce tutte le _fires_ a sua disposizione.
 
 **Funzioni**
+
 Si è cercato di limitare il numero di funzioni al minimo, quelle più importanti sono le seguenti:
 - `next_action(?action ?x ?y ?content ?diff)` semplifica l'esecuzione della `action` nel caso in cui si stia trattando un pezzo di nave terminale. Infatti prendendo in input il `content` della cella e le sue coordinate, calcola la cella a distanza `diff` evitando di gestire la diversità di ogni pezzo che si sta trattando in ogni regola.
 - `max_prob_neighbour(?x ?y)` è utilizzato nel caso in cui l'agente sia a conoscenza di una cella il cui `content` è `middle`. In questo caso l'agente calcola in quale delle quattro celle circostanti è più probabile che si trovi un altro pezzo di nave, individuando così l'orientamento della stessa. Per adempiere al compito utilizza ancora una volta i dati `k-per-row` e `k-per-col`.
 
 **Limiti**
+I limiti di questo agente sono minori rispetto al primo. Uno dei più penalizzanti si ha quando nella mappa non sono presenti celle conosciute, in quel caso l'agente utilizzerà le _fires_ per individuare navi. Nel caso in cui non dovesse trovarne nemmeno una, otterrebbe un punteggio molto basso.
 
 
 ## Agente 3
+
+**Conoscenza**
+
 La conoscenza è stata modellata definendo per ogni cella del campo di gioco, alcuni fatti non ordinati:
 - `cell_to_see` è utilizzato per definire su quali celle agire tramite una _guess_/_fire_.
 - `cell_considered` marca la cella come già presa in esame in modo che non venga più considerata.
