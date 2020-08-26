@@ -130,10 +130,10 @@ I limiti di questo agente sono minori rispetto al primo. Uno dei più penalizzan
 Il terzo ed ultimo agente utilizza la strategia più sofisticata tra tutti.
 
 Divide il suo processo in due macrofasi:
-1. Ragionamento e Inferenza (Certainty)
+1. Ragionamento ed Inferenza (Certainty)
     1. Controllo ed aggiornamento navi
     2. Gestione k-cell
-2. Espansione della conoscenza
+2. Espansione della conoscenza (Uncertainty)
     1. Da k-cell
     2. Senza evidenze
 
