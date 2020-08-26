@@ -78,7 +78,7 @@ I restanti file sono stati creati dal professore per la gestione del gioco, tra 
 Il primo agente adotta una strategia molto semplice. Utilizzando i dati del campo da gioco concessi dall'ambiente, e quindi il numero di pezzi di nave presenti per ogni riga e colonna (`k-per-row` e `k-per-col`), calcola le prime 20 celle più probabili ed effettua una _guess_. Non effettua alcuna _fire_ in quanto la penalità in caso di _miss_ sarebbe più alta.
 
 #### Conoscenza
-La conoscenza è stata modellata definendo il template `cell_prob` che misura la probabilità di trovare un pezzo di nave in una specifica cella. Viene asserito un nuovo fatto ordinato per tutte le celle.
+La conoscenza è stata modellata definendo `cell_prob` che misura la probabilità di trovare un pezzo di nave in una specifica cella. Viene asserito un nuovo fatto ordinato per tutte le celle.
 
 #### Regole di expertise
 Le regole di expertise importanti sono due:
@@ -123,13 +123,13 @@ Si è cercato di limitare il numero di funzioni al minimo, quelle più important
 - `max_prob_neighbour(?x ?y)` è utilizzato nel caso in cui l'agente sia a conoscenza di una cella il cui `content` è `middle`. In questo caso l'agente calcola in quale delle quattro celle circostanti è più probabile che si trovi un altro pezzo di nave, individuando così l'orientamento della stessa. Per adempiere al compito utilizza ancora una volta i dati `k-per-row` e `k-per-col`.
 
 #### Limiti
-I limiti di questo agente sono minori rispetto al primo. Uno dei più penalizzanti si ha quando nella mappa non sono presenti celle conosciute, in quel caso l'agente utilizzerà le _fires_ per individuare navi. Nel caso in cui non dovesse trovarne nemmeno una, otterrebbe un punteggio molto basso.
+I limiti di questo agente sono minori rispetto al primo. Uno dei più penalizzanti si ha quando nella mappa non sono presenti celle conosciute, in quel caso l'agente utilizzerà le _fires_ per individuare navi. Nel caso in cui non dovesse trovarne nemmeno una, otterrebbe un punteggio molto basso. Inoltre, nel caso in cui trovasse tante navi di tipo diverso, non riuscirebbe a ricondursi ad alcuna regola che si basa sulla conoscenza di navi affondate.
 
 
 ## Agente 3
 
 #### Conoscenza
-La conoscenza è stata modellata definendo per ogni cella del campo di gioco, alcuni fatti non ordinati:
+La conoscenza è stata modellata definendo per ogni cella del campo di gioco alcune tipologie di fatti:
 - `cell_to_see` è utilizzato per definire su quali celle agire tramite una _guess_/_fire_.
 - `cell_considered` marca la cella come già presa in esame in modo che non venga più considerata.
 - `cell_updated` è usata per segnare le celle che sono state oggetto di _guess_/_fire_.
@@ -139,3 +139,6 @@ La conoscenza è stata modellata definendo per ogni cella del campo di gioco, al
 - `border` rappresenta il bordo del campo da gioco.
 - `fired` segna la cella su cui è stata effettuata una _fire_.
 - `guessed` segna la cella su cui è stata effettuata una _guess_.
+
+#### Regole di expertise
+
