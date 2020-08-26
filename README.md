@@ -152,4 +152,14 @@ La conoscenza è stata modellata definendo per ogni cella del campo di gioco alc
 - `guessed` segna la cella su cui è stata effettuata una _guess_.
 
 #### Regole di expertise
+- `action_to_do` interviene appena un fatto `cell_to_see` viene asserito ed effettua l'azione specificata sulla cella specificata.
+
+Le regole della macrofase _Ragionamento ed Inferenza_ sono:
+- `update_kcp` per ogni `k-cell` decrementa il `k-per-row` ed il `k-per-col`.
+- `water_cell` si attiva quando l'agente tratta una `k-cell` che contiene un pezzo di nave terminale o un sottomarino singolo, e asserisce nuovi fatti `k-cell` con contenuto `water` attorno ad essa.
+- `r_last_action_base` effettua la guess della cella adiacente ad una `k-cell` che contiene un pezzo di nave terminale.
+- `r_middle_border_horizontal` si attiva in presenza di una `k-cell` contenente un `middle` ai bordi superiore o inferiore della mappa ed effettua la _guess_ delle celle adiacenti.
+- `r_middle_border_vertical` si attiva in presenza di una `k-cell` contenente un `middle` ai bordi destro o sinistro della mappa ed effettua la _guess_ delle celle adiacenti.
+- `r_middle_water_horizontal` inferisce la direzione di una nave non appena si trovi una `k-cell` contenente `water` sopra/sotto un `middle`.
+- `r_middle_water_vertical` inferisce la direzione di una nave non appena si trovi una `k-cell` contenente `water` a destra/sinistra di un `middle`.
 
