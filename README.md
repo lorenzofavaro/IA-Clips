@@ -159,7 +159,9 @@ Le regole della macrofase _Ragionamento ed Inferenza_ sono:
 - `water_cell` si attiva quando l'agente tratta una `k-cell` che contiene un pezzo di nave terminale o un sottomarino singolo, e asserisce nuovi fatti `k-cell` con contenuto `water` attorno ad essa.
 - `r_last_action_base` effettua la guess della cella adiacente ad una `k-cell` che contiene un pezzo di nave terminale.
 - `r_middle_border_horizontal` si attiva in presenza di una `k-cell` contenente un `middle` ai bordi superiore o inferiore della mappa ed effettua la _guess_ delle celle adiacenti.
-- `r_middle_border_vertical` si attiva in presenza di una `k-cell` contenente un `middle` ai bordi destro o sinistro della mappa ed effettua la _guess_ delle celle adiacenti.
 - `r_middle_water_horizontal` inferisce la direzione di una nave non appena si trovi una `k-cell` contenente `water` sopra/sotto un `middle`.
-- `r_middle_water_vertical` inferisce la direzione di una nave non appena si trovi una `k-cell` contenente `water` a destra/sinistra di un `middle`.
-
+- `zero_kpr` agisce quando una `k-per-row` è 0 e per ogni cella di quella riga il cui contenuto è sconosciuto asserisce un nuovo fatto `k-cell` dal contenuto `water`.
+- `rest_available_row` interviene quando il numero di celle di una riga dal contenuto sconosciuto è uguale al valore di `k-per-row`; asserisce che esse sono pezzi di navi.
+- `boat_is_long_4_hor` riconosce le navi da 4 non appena si è in presenza di 4 pezzi di nave orizzontali consecutivi asserendo `boat_decremented` per ogni cella e decrementando `boats_to_find (boat_4 ?x)`.
+- `sub_kcell` si accorge della presenza di un _sub_ e lo classifica come tale asserendo `boat_decremented` per quella cella e decrementando `boats_to_find (boat_1 ?x)`.
+- 
