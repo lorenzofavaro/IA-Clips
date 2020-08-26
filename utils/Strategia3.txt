@@ -1,6 +1,6 @@
 1) REASONING AND INFERENCE (CERTAINTY)
 
-    1.1) CICLO DI CONTROLLO
+    1.1) CONTROLLO ED AGGIORNAMENTO NAVI
 
             PER OGNI K-CELL/GUESS
                 k-per-row--
@@ -47,7 +47,7 @@
                 guess delle celle disponibili
                 boat_n--
 
-    1.2)
+    1.2) GESTIONE K-CELL
     
         SWITCH (k-cell){
 
@@ -108,20 +108,21 @@
     
 
 
-2) KNOWLEDGE EXPANSION DA K-CELL (UNCERTAINTY)
+2) KNOWLEDGE EXPANSION (UNCERTAINTY)
 
-IF last
-    Fire su cella -2
+    2.1) DA K-CELL
+        IF last
+            Fire su cella -2
 
-ELSE IF middle        
-    Guess celle laterali più probabili t.c. (k-per-row != 0 AND k-per-col != 0 AND not k-cell (water))
-    assert k-cell water per le 10 celle laterali a quelle "conosciute"
+        ELSE IF middle        
+            Guess celle laterali più probabili t.c. (k-per-row != 0 AND k-per-col != 0 AND not k-cell (water))
+            assert k-cell water per le 10 celle laterali a quelle "conosciute"
 
 
-3) UNKNOWN
+    2.2) SENZA EVIDENZE
 
-    IF fires > 0
-        Fire su cella più probabile t.c. che non sia già stata vista e che sia ammissibile (ossia non sia stata marchiata come water)
-    ELSE
-        Guess di tutte le celle rimanenti fino ad esaurimento, da quella più probabile a quella meno
-        Non modificare i valori di k-per-row e k-per-col
+        IF fires > 0
+            Fire su cella più probabile t.c. che non sia già stata vista e che sia ammissibile (ossia non sia stata marchiata come water)
+        ELSE
+            Guess di tutte le celle rimanenti fino ad esaurimento, da quella più probabile a quella meno
+            Non modificare i valori di k-per-row e k-per-col

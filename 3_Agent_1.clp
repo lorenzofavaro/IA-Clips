@@ -15,11 +15,11 @@
 	(slot val)
 )
 
-(deftemplate k-cell_to_see
+(deftemplate cell_to_see
 	(slot x) (slot y) (slot action)
 )
 
-(deftemplate k-cell_seen
+(deftemplate cell_considered
 	(slot x) (slot y)
 )
 
@@ -39,7 +39,7 @@
 )
 
 (deffunction far_from_others (?x ?y)
-	(if (any-factp ((?kcs k-cell_seen)) (or 
+	(if (any-factp ((?kcs cell_considered)) (or 
 											(and (eq ?kcs:x (- ?x 1)) (eq ?kcs:y ?y))
 											(and (eq ?kcs:x (+ ?x 1)) (eq ?kcs:y ?y))
 											(and (eq ?kcs:x ?x) (eq ?kcs:y (- ?y 1)))
@@ -58,7 +58,7 @@
 
 (deffunction find_max (?predicate)
 	(bind ?max FALSE)
-	(do-for-all-facts ((?f cell_prob)) (and (far_from_others ?f:x ?f:y) (not (any-factp ((?kcs k-cell_seen)) (and (eq ?kcs:x ?f:x) (eq ?kcs:y ?f:y)))))
+	(do-for-all-facts ((?f cell_prob)) (and (far_from_others ?f:x ?f:y) (not (any-factp ((?kcs cell_considered)) (and (eq ?kcs:x ?f:x) (eq ?kcs:y ?f:y)))))
 		(if (or (not ?max) (funcall ?predicate ?f ?max))
         then
         (bind ?max ?f)))
@@ -72,7 +72,7 @@
 		(bind ?new_x (+ ?x ?diff))
 		(if (< ?new_x 10)
 		then
-			(assert (k-cell_to_see (x ?new_x) (y ?y) (action ?action)))
+			(assert (cell_to_see (x ?new_x) (y ?y) (action ?action)))
 		)
 	)
 	(if (eq ?content bot)
@@ -80,7 +80,7 @@
 		(bind ?new_x (- ?x ?diff))
 		(if (>= ?new_x 0)
 		then
-			(assert (k-cell_to_see (x ?new_x) (y ?y) (action ?action)))
+			(assert (cell_to_see (x ?new_x) (y ?y) (action ?action)))
 		)
 	)
 
@@ -89,7 +89,7 @@
 		(bind ?new_y (+ ?y ?diff))
 		(if (< ?new_y 10)
 		then
-			(assert (k-cell_to_see (x ?x) (y ?new_y) (action ?action)))
+			(assert (cell_to_see (x ?x) (y ?new_y) (action ?action)))
 		)
 	)
 
@@ -98,35 +98,11 @@
 		(bind ?new_y (- ?y ?diff))
 		(if (>= ?new_y 0)
 		then
-			(assert (k-cell_to_see (x ?x) (y ?new_y) (action ?action)))
+			(assert (cell_to_see (x ?x) (y ?new_y) (action ?action)))
 		)
 	)
 )
 
-(deffunction next_cell (?x ?y ?content ?diff)
-	(if (eq ?content top)
-		then
-		(bind ?new_x (+ ?x ?diff))
-		(return (create$ ?new_x ?y))
-	)
-	(if (eq ?content bot)
-		then
-		(bind ?new_x (- ?x ?diff))
-		(return (create$ ?new_x ?y))
-	)
-
-	(if (eq ?content left)
-		then
-		(bind ?new_y (+ ?y ?diff))
-		(return (create$ ?x ?new_y))
-	)
-
-	(if (eq ?content right)
-		then
-		(bind ?new_y (- ?y ?diff))
-		(return (create$ ?x ?new_y))
-	)
-)
 
 (deffunction max_prob_neighbour (?x ?y)
 	(bind ?val1 0)
@@ -176,10 +152,10 @@
 
 (defrule action_to_do (declare (salience 30))
 	(status (step ?s) (currently running))
-	?ts <- (k-cell_to_see (x ?x) (y ?y) (action ?action))
+	?ts <- (cell_to_see (x ?x) (y ?y) (action ?action))
 =>
 	(retract ?ts)
-	(assert (k-cell_seen (x ?x) (y ?y)))
+	(assert (cell_considered (x ?x) (y ?y)))
 	(assert (exec (step ?s) (action ?action) (x ?x) (y ?y)))
 	(printout t "exec " ?action crlf)
 	(pop-focus)
@@ -191,7 +167,7 @@
 =>
 	(do-for-all-facts ((?kr k-per-row)) TRUE
 		(do-for-all-facts((?kc k-per-col)) TRUE
-			(if (not (any-factp ((?kcs k-cell_seen)) (and (eq ?kcs:x ?kr:row) (eq ?kcs:y ?kc:col))))
+			(if (not (any-factp ((?kcs cell_considered)) (and (eq ?kcs:x ?kr:row) (eq ?kcs:y ?kc:col))))
 				then
 				(assert (cell_prob (x ?kr:row) (y ?kc:col) (val (+ ?kc:num ?kr:num))))
 			)
@@ -203,10 +179,10 @@
 (defrule r43
 	(status (step ?s) (currently running))
 	(k-cell (x ?x) (y ?y) (content ?content&~sub&~middle))
-	(not (k-cell_seen(x ?x) (y ?y)))
+	(not (cell_considered(x ?x) (y ?y)))
 	?k <- (boats_to_find (boat_4 0) (boat_3 0) (boat_2 ?n2&:(neq ?n2 0)))
 =>
-	(assert (k-cell_seen (x ?x) (y ?y)))
+	(assert (cell_considered (x ?x) (y ?y)))
 	(next_action guess ?x ?y ?content 1)
 	(modify ?k (boat_2 (- ?n2 1)))
 )
@@ -218,10 +194,10 @@
 (defrule r42
 	(status (step ?s) (currently running))
 	(k-cell (x ?x) (y ?y) (content ?content&~sub&~middle))
-	(not (k-cell_seen (x ?x) (y ?y)))
+	(not (cell_considered (x ?x) (y ?y)))
 	?k <- (boats_to_find (boat_4 0) (boat_3 ?n3&:(neq ?n3 0)) (boat_2 0))
 =>
-	(assert (k-cell_seen (x ?x) (y ?y)))
+	(assert (cell_considered (x ?x) (y ?y)))
 	(printout t ?x ?y " visto DA R42" crlf)
 	(next_action guess ?x ?y ?content 1)
 	(next_action guess ?x ?y ?content 2)
@@ -235,10 +211,10 @@
 (defrule r4
 	(status (step ?s) (currently running))
 	(k-cell (x ?x) (y ?y) (content ?content&~sub&~middle))
-	(not (k-cell_seen (x ?x) (y ?y)))
+	(not (cell_considered (x ?x) (y ?y)))
 	?k <- (boats_to_find (boat_4 0) (boat_3 ?n3&:(neq ?n3 0)) (boat_2 ?n2&:(neq ?n2 0)))
 =>
-	(assert (k-cell_seen (x ?x) (y ?y)))
+	(assert (cell_considered (x ?x) (y ?y)))
 	(printout t ?x ?y " visto DA R4" crlf)
 	(assert (rule_in_progress (rule r4) (x ?x) (y ?y) (content ?content)))
 
@@ -275,10 +251,10 @@
 (defrule r32
 	(status (step ?s) (currently running))
 	(k-cell (x ?x) (y ?y) (content ?content&~sub&~middle))
-	(not (k-cell_seen (x ?x) (y ?y)))
+	(not (cell_considered (x ?x) (y ?y)))
 	?k <- (boats_to_find (boat_4 ?n4&:(neq ?n4 0)) (boat_3 0) (boat_2 0))
 =>
-	(assert (k-cell_seen (x ?x) (y ?y)))
+	(assert (cell_considered (x ?x) (y ?y)))
 	(printout t ?x ?y " visto DA R32" crlf)
 	(next_action guess ?x ?y ?content 1)
 	(next_action guess ?x ?y ?content 2)
@@ -293,10 +269,10 @@
 (defrule r3
 	(status (step ?s) (currently running))
 	(k-cell (x ?x) (y ?y) (content ?content&~sub&~middle))
-	(not (k-cell_seen (x ?x) (y ?y)))
+	(not (cell_considered (x ?x) (y ?y)))
 	?k <- (boats_to_find (boat_4 ?n4&:(neq ?n4 0)) (boat_3 0) (boat_2 ?n2&:(neq ?n2 0)))
 =>
-	(assert (k-cell_seen (x ?x) (y ?y)))
+	(assert (cell_considered (x ?x) (y ?y)))
 	(printout t ?x ?y " visto DA R3" crlf)
 	(assert (rule_in_progress (rule r3) (x ?x) (y ?y) (content ?content)))
 
@@ -327,10 +303,10 @@
 (defrule r2
 	(status (step ?s) (currently running))
 	(k-cell (x ?x) (y ?y) (content ?content&~sub&~middle))
-	(not (k-cell_seen (x ?x) (y ?y)))
+	(not (cell_considered (x ?x) (y ?y)))
 	?k <- (boats_to_find (boat_4 ?n4&:(neq ?n4 0)) (boat_3 ?n3&:(neq ?n3 0)) (boat_2 0))
 =>
-	(assert (k-cell_seen (x ?x) (y ?y)))
+	(assert (cell_considered (x ?x) (y ?y)))
 	(printout t ?x ?y " visto DA R2" crlf)
 	(assert (rule_in_progress (rule r2) (x ?x) (y ?y) (content ?content)))
 
@@ -358,9 +334,9 @@
 (defrule r
 	(status (step ?s) (currently running))
 	(k-cell (x ?x) (y ?y) (content ?content&~sub&~middle))
-	(not (k-cell_seen (x ?x) (y ?y)))
+	(not (cell_considered (x ?x) (y ?y)))
 =>
-	(assert (k-cell_seen (x ?x) (y ?y)))
+	(assert (cell_considered (x ?x) (y ?y)))
 	(printout t ?x ?y " visto DA R" crlf)
 	(assert (rule_in_progress (rule r) (x ?x) (y ?y) (content ?content)))
 
@@ -401,14 +377,14 @@
 (defrule r_middle
 	(status (step ?s) (currently running))
 	(k-cell (x ?x) (y ?y) (content ?content&middle))
-	(not (k-cell_seen (x ?x) (y ?y)))
+	(not (cell_considered (x ?x) (y ?y)))
 =>
-	(assert (k-cell_seen (x ?x) (y ?y)))
+	(assert (cell_considered (x ?x) (y ?y)))
 	(printout t ?x ?y " visto DA R_MIDDLE" crlf)
 	(bind ?cell (max_prob_neighbour ?x ?y))
 	(bind ?new_x (nth$ 1 ?cell)) (bind ?new_y (nth$ 2 ?cell))
 
-	(assert (k-cell_to_see (x ?new_x) (y ?new_y) (action fire)))
+	(assert (cell_to_see (x ?new_x) (y ?new_y) (action fire)))
 	(assert (rule_in_progress (rule r_middle) (x ?x) (y ?y) (content ?content)))
 )
 
@@ -436,8 +412,8 @@
 			(modify ?k (boat_3 (- ?n3 1)))
 		)
 	else
-		(assert (k-cell_to_see (x (- ?x (- ?new_x ?x))) (y (- ?y (- ?new_y ?y))) (action guess)))
-		(assert (k-cell_to_see (x (+ ?new_x (- ?new_x ?x))) (y (+ ?new_y (- ?new_y ?y))) (action guess)))
+		(assert (cell_to_see (x (- ?x (- ?new_x ?x))) (y (- ?y (- ?new_y ?y))) (action guess)))
+		(assert (cell_to_see (x (+ ?new_x (- ?new_x ?x))) (y (+ ?new_y (- ?new_y ?y))) (action guess)))
 		(modify ?k (boat_4 0))
 	)
 )
