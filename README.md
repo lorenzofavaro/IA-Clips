@@ -168,5 +168,5 @@ Le regole della macrofase _Ragionamento ed Inferenza_ sono:
 - `boat_is_limited_3_*` classifica una sequenza di 3 celle come nave se circondata da `water` o da `border`.
 - `boat_is_limited_2_*` classifica una sequenza di 2 celle come nave se circondata da `water` o da `border`.
 - `lasts_distance_1_*` riconosce una nave da 3 pezzi, quando trova 2 _last_ opposti a distanza 1 tra di loro.
-- `last_middle_distance_0_*` effettua la _guess_ della cella a fianco di `middle` quando al fianco opposto è presente un _last_.
-- `last_middle_distance_1_*`  
+- `last_middle_distance_0_*` effettua la _guess_ della cella a fianco di `middle` quando al fianco opposto è presente un _last_. Dopodichè "copre" d'acqua le celle laterali.
+- `last_middle_distance_1_*` riconosce la presenza di una corazzata quando nota la presenza di un _last_ ed un `middle` allineati a distanza 1, effettua le _guesses_ e decrementa la `boat_4`.
