@@ -156,6 +156,8 @@ La conoscenza è stata modellata definendo per ogni cella del campo di gioco alc
 
 #### Regole di expertise
 
+**Ragionamento ed Inferenza (Certainty)**
+
 Routine:
 - `action_to_do` interviene appena un fatto `cell_to_see` viene asserito ed effettua l'azione specificata sulla cella specificata.
 - `update_kcp` per ogni `k-cell`/`guessed` decrementa il `k-per-row` ed il `k-per-col`.
@@ -186,5 +188,19 @@ Inferenza da k-cell:
 - `r_middle_border_*` si attiva in presenza di una `k-cell` contenente un `middle` ai bordi della mappa ed effettua la _guess_ delle celle adiacenti.
 - `r_middle_water_*` inferisce la direzione di una nave non appena si trovi una `k-cell` contenente `water` vicino ad un `middle`.
 
+**Espansione della Conoscenza (Uncertainty)**
+
+Da k-cell:
+- `fire_from_last` effettua una _fire_ a distanza 2 da una cella _last_ conosciuta.
+- `infer_middle_direction_with_probability` si attiva quando non si hanno altre conoscenze riguardo i vicini di un `middle`. Viene effettuata la _guess_ di una delle 4 celle adiacenti guardando le probabilità date da `k-per-row` e `k-per-col`.
+
+Senza evidenze:
+- `fire_most_prob`
+
 #### Funzioni
 Nonostante si sia cercato di ridurre al minimo il numero di funzioni, ne sono presenti alcune:
+- `water_around(?x ?y ?content)` data una cella contenente un _last_ o un _sub_ la circonda di acqua asserendo fatti ordinati `k-cell` contenenti `water`.
+- `water_around_unknown(?x ?y ?orientation)` è utilizzato quando non si sa che pezzo di nave si stia trattando, tuttavia ne si conosce l'orientamento. Circonda le sei celle laterali di `water`.
+- `next_action(?action ?x ?y ?content)` controlla se la cella sia valida e non sia una conosciuta. Dopodichè asserisce `cell_to_see` di modo che la regola `action_to_do` venga attivata e utilizza `water_around sulla cella specificata`.
+- `next_action_unknown(?action ?x ?x ?orientation)` ha lo stesso comportamento della precedente ma utilizza `water_around_unknown`.
+- `guess_rest(?type ?value ?n_available)` effettua la _guess_ delle `?n_available` celle nella `?value`esima `?type` (riga o colonna).
