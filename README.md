@@ -186,4 +186,5 @@ Inferenza da k-cell:
 - `r_middle_border_*` si attiva in presenza di una `k-cell` contenente un `middle` ai bordi della mappa ed effettua la _guess_ delle celle adiacenti.
 - `r_middle_water_*` inferisce la direzione di una nave non appena si trovi una `k-cell` contenente `water` vicino ad un `middle`.
 
-
+#### Funzioni
+Nonostante si sia cercato di ridurre al minimo il numero di funzioni, ne sono presenti alcune:
