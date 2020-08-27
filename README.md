@@ -156,7 +156,7 @@ La conoscenza è stata modellata definendo per ogni cella del campo di gioco alc
 
 Le regole della macrofase _Ragionamento ed Inferenza_ sono:
 - `update_kcp` per ogni `k-cell` decrementa il `k-per-row` ed il `k-per-col`.
-- `water_cell` si attiva quando l'agente tratta una `k-cell` che contiene un pezzo di nave terminale o un sottomarino singolo, e asserisce nuovi fatti `k-cell` con contenuto `water` attorno ad essa.
+- `water_cell` si attiva quando l'agente tratta una `k-cell` che contiene un pezzo di nave terminale o un sottomarino, e asserisce nuovi fatti `k-cell` con contenuto `water` attorno ad essa.
 - `r_last_action_base` effettua la guess della cella adiacente ad una `k-cell` che contiene un pezzo di nave terminale.
 - `r_middle_border_horizontal` si attiva in presenza di una `k-cell` contenente un `middle` ai bordi superiore o inferiore della mappa ed effettua la _guess_ delle celle adiacenti.
 - `r_middle_water_horizontal` inferisce la direzione di una nave non appena si trovi una `k-cell` contenente `water` sopra/sotto un `middle`.
@@ -164,4 +164,8 @@ Le regole della macrofase _Ragionamento ed Inferenza_ sono:
 - `rest_available_row` interviene quando il numero di celle di una riga dal contenuto sconosciuto è uguale al valore di `k-per-row`; asserisce che esse sono pezzi di navi.
 - `boat_is_long_4_hor` riconosce le navi da 4 non appena si è in presenza di 4 pezzi di nave orizzontali consecutivi asserendo `boat_decremented` per ogni cella e decrementando `boats_to_find (boat_4 ?x)`.
 - `sub_kcell` si accorge della presenza di un _sub_ e lo classifica come tale asserendo `boat_decremented` per quella cella e decrementando `boats_to_find (boat_1 ?x)`.
-- 
+- `sub_found` classifica una cella _guessed_ come sottomarino se circondato da `water` o da `border`.
+- `boat_is_limited_3_hor` classifica una sequenza di 3 celle orizzontali come nave se circondata da `water` o da `border`.
+- `boat_is_limited_2_hor` classifica una sequenza di 2 celle orizzontali come nave se circondata da `water` o da `border`.
+- `lasts_distance_1_hor` riconosce una nave da 3 pezzi, quando trova 2 _last_ opposti a distanza 1 tra di loro.
+- `last_middle_distance_0_left`
