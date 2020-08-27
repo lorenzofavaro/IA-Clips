@@ -158,7 +158,7 @@ La conoscenza è stata modellata definendo per ogni cella del campo di gioco alc
 
 Routine:
 - `action_to_do` interviene appena un fatto `cell_to_see` viene asserito ed effettua l'azione specificata sulla cella specificata.
-- `update_kcp` per ogni `k-cell` decrementa il `k-per-row` ed il `k-per-col`.
+- `update_kcp` per ogni `k-cell`/`guessed` decrementa il `k-per-row` ed il `k-per-col`.
 - `water_cell` si attiva quando l'agente tratta una `k-cell` che contiene un pezzo di nave terminale o un sottomarino, e asserisce nuovi fatti `k-cell` con contenuto `water` attorno ad essa. I `middle` non vengono trattati in questa regola in quanto la loro gestione dipende da caso a caso e dal loro orientamento.
 
 Inferenza da k-per-*:
