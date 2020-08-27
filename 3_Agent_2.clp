@@ -384,7 +384,7 @@
     (assert (cell_considered (x ?x) (y ?y)))
 )
 
-; Per ogni k-cell decrementa il k-per-row e k-per-cell
+; Per ogni k-cell decrementa il k-per-row e k-per-col
 (defrule update_kcp (declare (salience 40))
     (status (step ?s) (currently running))
     (or
