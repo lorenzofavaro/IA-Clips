@@ -156,7 +156,7 @@ La conoscenza è stata modellata definendo per ogni cella del campo di gioco alc
 
 #### Regole di expertise
 
-**Ragionamento ed Inferenza (Certainty)**
+<ins> Ragionamento ed Inferenza (Certainty) </ins>
 
 Routine:
 - `action_to_do` interviene appena un fatto `cell_to_see` viene asserito ed effettua l'azione specificata sulla cella specificata.
@@ -188,7 +188,7 @@ Inferenza da k-cell:
 - `r_middle_border_*` si attiva in presenza di una `k-cell` contenente un `middle` ai bordi della mappa ed effettua la _guess_ delle celle adiacenti.
 - `r_middle_water_*` inferisce la direzione di una nave non appena si trovi una `k-cell` contenente `water` vicino ad un `middle`.
 
-**Espansione della Conoscenza (Uncertainty)**
+<ins> Espansione della Conoscenza (Uncertainty) </ins>
 
 Da k-cell:
 - `fire_from_last` effettua una _fire_ a distanza 2 da una cella _last_ conosciuta.
