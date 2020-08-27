@@ -77,18 +77,18 @@ I restanti file sono stati creati dal professore per la gestione del gioco, tra 
 ## Agente 1
 Il primo agente adotta una strategia molto semplice. Utilizzando i dati del campo da gioco concessi dall'ambiente, e quindi il numero di pezzi di nave presenti per ogni riga e colonna (`k-per-row` e `k-per-col`), calcola le prime 20 celle più probabili ed effettua una _guess_. Non effettua alcuna _fire_ in quanto la penalità in caso di _miss_ sarebbe più alta.
 
-#### Conoscenza
+### Conoscenza
 La conoscenza è stata modellata definendo `cell_prob` che misura la probabilità di trovare un pezzo di nave in una specifica cella. Viene asserito un nuovo fatto ordinato per tutte le celle.
 
-#### Regole di expertise
+### Regole di expertise
 Le regole di expertise importanti sono due:
 - `calc_cell_values` calcola per ogni cella di gioco, la probabilità che contenga un pezzo di nave.
 - `guess_best` utilizza la `cell_prob` di maggior valore e ne effettua la _guess_.
 
-#### Funzioni
+### Funzioni
 Sono state utilizzate due funzioni: `greater_than(?f1 ?f2)`, ossia un comparatore tra due fatti, in questo caso `cell_prob`; `find_max(?template ?predicate)` che permette di trovare la cella con probabilità maggiore. 
 
-#### Limiti
+### Limiti
 Ovviamente, adottando una strategia così semplice, che non tiene conto di molti dati messi a disposizione dall'ambiente, i suoi limiti sono molti. Come ci si aspetta ottiene punteggi di basso valore.
 
 ## Agente 2
@@ -100,7 +100,7 @@ Inoltre memorizza l'informazione relativa al numero di navi abbattute e rimanent
 
 Per maggiore chiarezza, consultare la [strategia](https://github.com/lorenzofavaro/IA-Clips/blob/master/utils/Strategia2.txt) relativa a questo agente.
 
-#### Conoscenza
+### Conoscenza
 Sono state definite varie tipologie di fatti per la gestione della conoscenza, tra cui:
 - `boats_to_find` che memorizza per ogni tipologia di nave, quante ne devono essere ancora trovate. Ad inizio gioco viene così definito: `(deffacts total_boats (boats_to_find (boat_4 1) (boat_3 2) (boat_2 3) (boat_1 4)))`.
 - `cell_prob` rappresenta per ogni cella la probabilità che contenga un pezzo di nave.
@@ -108,7 +108,7 @@ Sono state definite varie tipologie di fatti per la gestione della conoscenza, t
 - `cell_considered` marca la cella come già presa in esame in modo che non venga più considerata.
 - `rule_in_progress` è utile all'agente a riconoscere se è in corso una sequenza di azioni specifica, in modo da non interromperla.
 
-#### Regole di expertise
+### Regole di expertise
 La regola più importante è `action_to_do` (infatti ha salience 30) che interviene appena un fatto `cell_to_see` viene asserito ed effettua l'azione specificata sulla cella specificata. Il fatto ordinato `cell_to_see` viene asserito dall'agente in base alla situazione in cui si trova.
 
 Sono presenti alcune regole che gestiscono ciascuna una diversa situazione, come ad esempio nel caso di `r43` che definisce l'azione da effettuare nel caso in cui siano state affondate le navi da 4 e 3 pezzi e si sia a conoscenza di un pezzo di nave terminale. Per alcune situazioni di questo tipo, sono state definite delle regole ausiliarie (con il suffisso `_aux`) poichè non è sufficiente singola azione.
@@ -117,12 +117,12 @@ Nel caso in cui l'agente non abbia dati utili da gestire, viene attivata la rego
 
 Infine, l'agente termina attraverso la regola `out_of_fires` non appena esaurisce tutte le _fires_ a sua disposizione.
 
-#### Funzioni
+### Funzioni
 Si è cercato di limitare il numero di funzioni al minimo, quelle più importanti sono le seguenti:
 - `next_action(?action ?x ?y ?content ?diff)` semplifica l'esecuzione della `action` nel caso in cui si stia trattando un pezzo di nave terminale. Infatti prendendo in input il `content` della cella e le sue coordinate, calcola la cella a distanza `diff` evitando di gestire la diversità di ogni pezzo che si sta trattando in ogni regola.
 - `max_prob_neighbour(?x ?y)` è utilizzato nel caso in cui l'agente sia a conoscenza di una cella il cui `content` è `middle`. In questo caso l'agente calcola in quale delle quattro celle circostanti è più probabile che si trovi un altro pezzo di nave, individuando così l'orientamento della stessa. Per adempiere al compito utilizza ancora una volta i dati `k-per-row` e `k-per-col`.
 
-#### Limiti
+### Limiti
 I limiti di questo agente sono minori rispetto al primo. Uno dei più penalizzanti si ha quando nella mappa non sono presenti celle conosciute, in quel caso l'agente utilizzerà le _fires_ per individuare navi. Nel caso in cui non dovesse trovarne nemmeno una, otterrebbe un punteggio molto basso. Inoltre, nel caso in cui trovasse tante navi di tipo diverso, non riuscirebbe a ricondursi ad alcuna regola che si basa sulla conoscenza di navi affondate.
 
 
@@ -142,7 +142,7 @@ Divide il suo processo in due macrofasi:
 
 Per maggiore chiarezza, consultare la [strategia](https://github.com/lorenzofavaro/IA-Clips/blob/master/utils/Strategia3.txt) relativa a questo agente.
 
-#### Conoscenza
+### Conoscenza
 La conoscenza è stata modellata definendo per ogni cella del campo di gioco alcune tipologie di fatti:
 - `cell_to_see` è utilizzato per definire su quali celle agire tramite una _guess_/_fire_.
 - `cell_considered` marca la cella come già presa in esame in modo che non venga più considerata.
@@ -154,9 +154,9 @@ La conoscenza è stata modellata definendo per ogni cella del campo di gioco alc
 - `fired` segna la cella su cui è stata effettuata una _fire_.
 - `guessed` segna la cella su cui è stata effettuata una _guess_.
 
-#### Regole di expertise
+### Regole di expertise
 
-<ins> Ragionamento ed Inferenza (Certainty) </ins>
+#### Ragionamento ed Inferenza (Certainty)
 
 Routine:
 - `action_to_do` interviene appena un fatto `cell_to_see` viene asserito ed effettua l'azione specificata sulla cella specificata.
@@ -188,7 +188,7 @@ Inferenza da k-cell:
 - `r_middle_border_*` si attiva in presenza di una `k-cell` contenente un `middle` ai bordi della mappa ed effettua la _guess_ delle celle adiacenti.
 - `r_middle_water_*` inferisce la direzione di una nave non appena si trovi una `k-cell` contenente `water` vicino ad un `middle`.
 
-<ins> Espansione della Conoscenza (Uncertainty) </ins>
+#### Espansione della Conoscenza (Uncertainty)
 
 Da k-cell:
 - `fire_from_last` effettua una _fire_ a distanza 2 da una cella _last_ conosciuta.
@@ -197,7 +197,7 @@ Da k-cell:
 Senza evidenze:
 - `fire_most_prob`
 
-#### Funzioni
+### Funzioni
 Nonostante si sia cercato di ridurre al minimo il numero di funzioni, ne sono presenti alcune:
 - `water_around(?x ?y ?content)` data una cella contenente un _last_ o un _sub_ la circonda di acqua asserendo fatti ordinati `k-cell` contenenti `water`.
 - `water_around_unknown(?x ?y ?orientation)` è utilizzato quando non si sa che pezzo di nave si stia trattando, tuttavia ne si conosce l'orientamento. Circonda le sei celle laterali di `water`.
