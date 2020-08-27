@@ -1044,9 +1044,9 @@
 )
 
 ; In caso boat_2 == 0, guess della cella circostante di tutte le file di 2 boat rimanenti (orizzontale)
-(defrule guess_more_if_boat2_is_zero_hor_1 (declare (salience 15))
+(defrule r2_hor_1 (declare (salience 15))
     (status (step ?s) (currently running))
-    (boats_to_find (boat_2 0))
+    (boats_to_find (boat_4 ?n4&~0) (boat_3 ?n3&~0) (boat_2 0))
 
     (cell_updated (x ?x) (y ?y))
     (not (boat_decremented (x ?x) (y ?y)))
@@ -1069,9 +1069,9 @@
 )
 
 
-(defrule guess_more_if_boat2_is_zero_hor_2 (declare (salience 15))
+(defrule r2_hor_2 (declare (salience 15))
     (status (step ?s) (currently running))
-    (boats_to_find (boat_2 0))
+    (boats_to_find (boat_4 ?n4&~0) (boat_3 ?n3&~0) (boat_2 0))
 
     (cell_updated (x ?x) (y ?y))
     (not (boat_decremented (x ?x) (y ?y)))
@@ -1094,9 +1094,9 @@
 )
 
 ; In caso boat_2 == 0, guess della cella circostante di tutte le file di 2 boat rimanenti (verticale)
-(defrule guess_more_if_boat2_is_zero_ver_1 (declare (salience 15))
+(defrule r2_ver_1 (declare (salience 15))
     (status (step ?s) (currently running))
-    (boats_to_find (boat_2 0))
+    (boats_to_find (boat_4 ?n4&~0) (boat_3 ?n3&~0) (boat_2 0))
 
     (cell_updated (x ?x) (y ?y))
     (not (boat_decremented (x ?x) (y ?y)))
@@ -1118,9 +1118,9 @@
 )
 
 
-(defrule guess_more_if_boat2_is_zero_ver_2 (declare (salience 15))
+(defrule r2_ver_2 (declare (salience 15))
     (status (step ?s) (currently running))
-    (boats_to_find (boat_2 0))
+    (boats_to_find (boat_4 ?n4&~0) (boat_3 ?n3&~0) (boat_2 0))
 
     (cell_updated (x ?x) (y ?y))
     (not (boat_decremented (x ?x) (y ?y)))
