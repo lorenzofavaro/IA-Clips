@@ -4,75 +4,69 @@
         k-per-row--
         k-per-col--
 
-    1.1) CONTROLLO ED AGGIORNAMENTO NAVI
-            
-            -------------------
-            RICONOSCIMENTO NAVI
-            -------------------
+    1.1) RICONOSCIMENTO NAVI
 
-            PER OGNI k-per-row E PER OGNI k-per-col == 0
-                assert k-cell water per ogni cella non conosciuta
-                conta le celle conosciute e ricalcola i vari boat_n
-                    
-            PER OGNI ((k-per-row != 0 AND k-per-row == count_celle_disponibili di quella riga) 
-                OR
-                (k-per-col != 0 AND k-per-col == count_celle_disponibili di quella colonna))
+        PER OGNI k-per-row E PER OGNI k-per-col == 0
+            assert k-cell water per ogni cella non conosciuta
+            conta le celle conosciute e ricalcola i vari boat_n
                 
-                guess delle celle disponibili
-                boat_n--
+        PER OGNI ((k-per-row != 0 AND k-per-row == count_celle_disponibili di quella riga) 
+            OR
+            (k-per-col != 0 AND k-per-col == count_celle_disponibili di quella colonna))
+            
+            guess delle celle disponibili
+            boat_n--
 
 
-            IF due last opposti sono distanti 0
+        IF due last opposti sono distanti 0
+            boat_2--
+
+        IF due last opposti sono distanti 1
+            boat_3--
+        
+        IF due last opposti sono distanti 2
+            boat_4--
+        
+        IF last e middle sono distanti 1
+            guess cella -1 da middle
+            boat_4--
+
+        IF due middle sono distanti 0
+            guess laterali
+            boat_4--
+
+        PER OGNI fila di 2 boat (k-cell o guess)
+            IF (circondate da [water OR not exist])
                 boat_2--
 
-            IF due last opposti sono distanti 1
+        Se esiste una fila di 4 boat (k-cell o guess)
+            boat_4--
+
+        PER OGNI fila di 3 boat (k-cell o guess)
+            IF circondate da [water OR not exist]
                 boat_3--
-            
-            IF due last opposti sono distanti 2
-                boat_4--
-            
-            IF last e middle sono distanti 1
-                guess cella -1 da middle
-                boat_4--
 
-            IF due middle sono distanti 0
-                guess laterali
-                boat_4--
+    1.2) INFERENZA DA NAVI AFFONDATE
 
-            PER OGNI fila di 2 boat (k-cell o guess)
-                IF (circondate da [water OR not exist])
-                    boat_2--
-
-            Se esiste una fila di 4 boat (k-cell o guess)
-                boat_4--
-
+        IF boat_4 == 0
             PER OGNI fila di 3 boat (k-cell o guess)
-                IF circondate da [water OR not exist]
-                    boat_3--
+                boat_3--
+        
+        IF boat_3 == 0
+            Se esiste fila da 3 non ancora vista, è quella da 4
+                IF k-cell last
+                    guess cella -3 da last
+                (ELSE
+                    Guess cella laterale più probabile) // BAH FORSE
+        
+        IF boat_2 == 0
+            PER OGNI fila da 2 con K-cell last o da cui è possibile inferire la direzione
+                guess cella -2
+        
+        IF boat_1 == 0
+            ?
 
-            ----------------------------
-            INFERENZA DA NAVI AFFONDATE
-            ----------------------------
-
-            IF boat_4 == 0
-                PER OGNI fila di 3 boat (k-cell o guess)
-                    boat_3--
-            
-            IF boat_3 == 0
-                Se esiste fila da 3 non ancora vista, è quella da 4
-                    IF k-cell last
-                        guess cella -3 da last
-                    (ELSE
-                        Guess cella laterale più probabile) // BAH FORSE
-            
-            IF boat_2 == 0
-                PER OGNI fila da 2 con K-cell last o da cui è possibile inferire la direzione
-                    guess cella -2
-            
-            IF boat_1 == 0
-                ?
-
-    1.2) GESTIONE K-CELL
+    1.3) GESTIONE K-CELL
     
         SWITCH (k-cell){
 
@@ -106,8 +100,8 @@
                 guess celle adiacenti opposte
                 assert water per le 6 celle attorno al middle
         
-        
         case sub:
+        
             assert water per le 8 celle intorno (controllare se esistono tutte 8)
             boat_1--
     }

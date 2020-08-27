@@ -131,8 +131,9 @@ Il terzo ed ultimo agente utilizza la strategia più sofisticata tra tutti.
 
 Divide il suo processo in due macrofasi:
 1. Ragionamento ed Inferenza (Certainty)
-    1. Controllo ed aggiornamento navi
-    2. Gestione k-cell
+    1. Riconoscimento navi
+    2. Inferenza da navi affondate
+    3. Gestione k-cell
 2. Espansione della conoscenza (Uncertainty)
     1. Da k-cell
     2. Senza evidenze
@@ -162,8 +163,6 @@ Le regole della macrofase _Ragionamento ed Inferenza_ sono:
 - `r_middle_water_*` inferisce la direzione di una nave non appena si trovi una `k-cell` contenente `water` vicino ad un `middle`.
 - `zero_kp*` agisce quando una `k-per-*` è 0 e per ogni cella di quella riga/colonna il cui contenuto è sconosciuto asserisce un nuovo fatto `k-cell` dal contenuto `water`.
 - `rest_available_*` interviene quando il numero di celle di una riga/colonna dal contenuto sconosciuto è uguale al valore di `k-per-*`; asserisce che esse sono pezzi di navi.
-
-Riconoscimento navi:
 - `boat_is_long_4_*` riconosce le navi da 4 non appena si è in presenza di 4 pezzi di nave consecutivi asserendo `boat_decremented` per ogni cella e decrementando `boats_to_find (boat_4 ?x)`.
 - `sub_kcell` si accorge della presenza di un _sub_ e lo classifica come tale asserendo `boat_decremented` per quella cella e decrementando `boats_to_find (boat_1 ?x)`.
 - `sub_found` classifica una cella _guessed_ come sottomarino se circondato da `water` o da `border`.
