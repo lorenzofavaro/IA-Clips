@@ -153,26 +153,33 @@ La conoscenza è stata modellata definendo per ogni cella del campo di gioco alc
 - `guessed` segna la cella su cui è stata effettuata una _guess_.
 
 #### Regole di expertise
-- `action_to_do` interviene appena un fatto `cell_to_see` viene asserito ed effettua l'azione specificata sulla cella specificata.
 
-Le regole della macrofase _Ragionamento ed Inferenza_ sono:
+Routine:
+- `action_to_do` interviene appena un fatto `cell_to_see` viene asserito ed effettua l'azione specificata sulla cella specificata.
 - `update_kcp` per ogni `k-cell` decrementa il `k-per-row` ed il `k-per-col`.
-- `water_cell` si attiva quando l'agente tratta una `k-cell` che contiene un pezzo di nave terminale o un sottomarino, e asserisce nuovi fatti `k-cell` con contenuto `water` attorno ad essa.
-- `r_last_action_base` effettua la guess della cella adiacente ad una `k-cell` che contiene un pezzo di nave terminale.
-- `r_middle_border_*` si attiva in presenza di una `k-cell` contenente un `middle` ai bordi della mappa ed effettua la _guess_ delle celle adiacenti.
-- `r_middle_water_*` inferisce la direzione di una nave non appena si trovi una `k-cell` contenente `water` vicino ad un `middle`.
-- `zero_kp*` agisce quando una `k-per-*` è 0 e per ogni cella di quella riga/colonna il cui contenuto è sconosciuto asserisce un nuovo fatto `k-cell` dal contenuto `water`.
-- `rest_available_*` interviene quando il numero di celle di una riga/colonna dal contenuto sconosciuto è uguale al valore di `k-per-*`; asserisce che esse sono pezzi di navi.
-- `boat_is_long_4_*` riconosce le navi da 4 non appena si è in presenza di 4 pezzi di nave consecutivi asserendo `boat_decremented` per ogni cella e decrementando `boats_to_find (boat_4 ?x)`.
-- `sub_kcell` si accorge della presenza di un _sub_ e lo classifica come tale asserendo `boat_decremented` per quella cella e decrementando `boats_to_find (boat_1 ?x)`.
-- `sub_found` classifica una cella _guessed_ come sottomarino se circondato da `water` o da `border`.
-- `boat_is_limited_3_*` classifica una sequenza di 3 celle come nave se circondata da `water` o da `border`.
+- `water_cell` si attiva quando l'agente tratta una `k-cell` che contiene un pezzo di nave terminale o un sottomarino, e asserisce nuovi fatti `k-cell` con contenuto `water` attorno ad essa. I `middle` non vengono trattati in questa regola in quanto la loro gestione dipende da caso a caso e dal loro orientamento.
+- `zero_kp*` agisce quando una `k-per-*` è 0. Per ogni cella di quella riga/colonna il cui contenuto è sconosciuto, asserisce un nuovo fatto `k-cell` dal contenuto `water`.
+- `rest_available_*` interviene quando il numero di celle di una riga/colonna dal contenuto sconosciuto è uguale al valore di `k-per-*`; effettua una _guess_ per ciascuna di esse.
+
+Riconoscimento navi:
+- `sub_found` classifica come sottomarino una cella _guessed_ se circondato da `water` o da `border`.
+- `sub_kcell` si accorge della presenza di un _sub_ da `k-cell` e lo classifica come tale asserendo `boat_decremented` per quella cella e decrementando `boats_to_find (boat_1 ?x)`.
 - `boat_is_limited_2_*` classifica una sequenza di 2 celle come nave se circondata da `water` o da `border`.
+- `boat_is_limited_3_*` classifica una sequenza di 3 celle come nave se circondata da `water` o da `border`.
 - `lasts_distance_1_*` riconosce una nave da 3 pezzi, quando trova 2 _last_ opposti a distanza 1 tra di loro.
-- `last_middle_distance_0_*` effettua la _guess_ della cella a fianco di `middle` quando al fianco opposto è presente un _last_. Dopodichè "copre" d'acqua le celle laterali.
-- `last_middle_distance_1_*` riconosce la presenza di una corazzata quando nota la presenza di un _last_ ed un `middle` allineati a distanza 1, effettua le _guesses_ e decrementa la `boats_to_find (boat_4 ?x)`.
+- `boat_is_long_4_*` riconosce la corazzata non appena si è in presenza di 4 pezzi di nave consecutivi asserendo `boat_decremented` per ogni cella e decrementando `boats_to_find (boat_4 ?x)`.
 - `middles_distance_0_*` individua una corazzata quando si accorge di due `middle` attaccati. Effettua le _guesses_ e decrementa il contatore delle navi da 4.
+- `last_middle_distance_1_*` riconosce la presenza di una corazzata quando nota la presenza di un _last_ ed un `middle` allineati a distanza 1, effettua le _guesses_ e decrementa la `boats_to_find (boat_4 ?x)`.
+
+Inferenza da navi affondate:
 - `r4_*` si attiva quando la corazzata è stata affondata ma non i due incrociatori, aggiorna il contatore degli incrociatori nel qualcaso si sia a conoscenza di una sequenza di 3 celle contigue contenenti pezzi di nave.
 - `r3_*` interviene quando i due incrociatori sono stati affondati ma non la corazzata, sapendo che se c'è una sequenza di 3 celle consecutive marcate come pezzi di nave, fanno sicuramente parte della corazzata. Effettua una _guess_ su una delle due celle laterali e decrementa il contatore della corazzata, ritenendola adesso affondata.
 - `r2_*` effettua la _guess_ delle celle laterali delle sequenze di celle marcate come navi, nel momento in cui tutti cacciatorpedinieri sono stati affondati ma rimangono la corazzata o gli incrociatori.
+
+Guessing:
+- `last_middle_distance_0_*` effettua la _guess_ della cella a fianco di `middle` quando al fianco opposto è presente un _last_. Dopodichè "copre" d'acqua le celle laterali.
+- `r_last_action_base` effettua la guess della cella adiacente ad una `k-cell` che contiene un pezzo di nave terminale.
+- `r_middle_border_*` si attiva in presenza di una `k-cell` contenente un `middle` ai bordi della mappa ed effettua la _guess_ delle celle adiacenti.
+- `r_middle_water_*` inferisce la direzione di una nave non appena si trovi una `k-cell` contenente `water` vicino ad un `middle`.
+
 
