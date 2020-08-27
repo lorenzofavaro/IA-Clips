@@ -162,6 +162,7 @@ Le regole della macrofase _Ragionamento ed Inferenza_ sono:
 - `r_middle_water_*` inferisce la direzione di una nave non appena si trovi una `k-cell` contenente `water` vicino ad un `middle`.
 - `zero_kp*` agisce quando una `k-per-*` è 0 e per ogni cella di quella riga/colonna il cui contenuto è sconosciuto asserisce un nuovo fatto `k-cell` dal contenuto `water`.
 - `rest_available_*` interviene quando il numero di celle di una riga/colonna dal contenuto sconosciuto è uguale al valore di `k-per-*`; asserisce che esse sono pezzi di navi.
+
 - `boat_is_long_4_*` riconosce le navi da 4 non appena si è in presenza di 4 pezzi di nave consecutivi asserendo `boat_decremented` per ogni cella e decrementando `boats_to_find (boat_4 ?x)`.
 - `sub_kcell` si accorge della presenza di un _sub_ e lo classifica come tale asserendo `boat_decremented` per quella cella e decrementando `boats_to_find (boat_1 ?x)`.
 - `sub_found` classifica una cella _guessed_ come sottomarino se circondato da `water` o da `border`.
@@ -169,4 +170,5 @@ Le regole della macrofase _Ragionamento ed Inferenza_ sono:
 - `boat_is_limited_2_*` classifica una sequenza di 2 celle come nave se circondata da `water` o da `border`.
 - `lasts_distance_1_*` riconosce una nave da 3 pezzi, quando trova 2 _last_ opposti a distanza 1 tra di loro.
 - `last_middle_distance_0_*` effettua la _guess_ della cella a fianco di `middle` quando al fianco opposto è presente un _last_. Dopodichè "copre" d'acqua le celle laterali.
-- `last_middle_distance_1_*` riconosce la presenza di una corazzata quando nota la presenza di un _last_ ed un `middle` allineati a distanza 1, effettua le _guesses_ e decrementa la `boat_4`.
+- `last_middle_distance_1_*` riconosce la presenza di una corazzata quando nota la presenza di un _last_ ed un `middle` allineati a distanza 1, effettua le _guesses_ e decrementa la `boats_to_find (boat_4 ?x)`.
+- `middles_distance_0_hor` individua una corazzata quando si accorge di due `middle` attaccati. Effettua le _guesses_ e decrementa il contatore delle navi da 4 (1).
