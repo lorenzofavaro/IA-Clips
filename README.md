@@ -172,4 +172,5 @@ Le regole della macrofase _Ragionamento ed Inferenza_ sono:
 - `last_middle_distance_0_*` effettua la _guess_ della cella a fianco di `middle` quando al fianco opposto è presente un _last_. Dopodichè "copre" d'acqua le celle laterali.
 - `last_middle_distance_1_*` riconosce la presenza di una corazzata quando nota la presenza di un _last_ ed un `middle` allineati a distanza 1, effettua le _guesses_ e decrementa la `boats_to_find (boat_4 ?x)`.
 - `middles_distance_0_*` individua una corazzata quando si accorge di due `middle` attaccati. Effettua le _guesses_ e decrementa il contatore delle navi da 4.
-- 
+- `r4_*` si attiva quando la corazzata è stata colpita e affondata, aggiorna il contatore degli incrociatori nel qualcaso si sia a conoscenza di una sequenza di 3 celle contigue contenenti pezzi di nave.
+- `r3_*`
