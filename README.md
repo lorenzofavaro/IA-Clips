@@ -172,4 +172,5 @@ Riconoscimento navi:
 - `lasts_distance_1_*` riconosce una nave da 3 pezzi, quando trova 2 _last_ opposti a distanza 1 tra di loro.
 - `last_middle_distance_0_*` effettua la _guess_ della cella a fianco di `middle` quando al fianco opposto è presente un _last_. Dopodichè "copre" d'acqua le celle laterali.
 - `last_middle_distance_1_*` riconosce la presenza di una corazzata quando nota la presenza di un _last_ ed un `middle` allineati a distanza 1, effettua le _guesses_ e decrementa la `boats_to_find (boat_4 ?x)`.
-- `middles_distance_0_hor` individua una corazzata quando si accorge di due `middle` attaccati. Effettua le _guesses_ e decrementa il contatore delle navi da 4 (1).
+- `middles_distance_0_*` individua una corazzata quando si accorge di due `middle` attaccati. Effettua le _guesses_ e decrementa il contatore delle navi da 4.
+- 
