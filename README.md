@@ -176,7 +176,7 @@ Inferenza da navi affondate:
 - `r3_*` interviene quando i due incrociatori sono stati affondati ma non la corazzata, sapendo che se c'è una sequenza di 3 celle consecutive marcate come pezzi di nave, fanno sicuramente parte della corazzata. Effettua una _guess_ su una delle due celle laterali e decrementa il contatore della corazzata, ritenendola adesso affondata.
 - `r2_*` effettua la _guess_ delle celle laterali delle sequenze di celle marcate come navi, nel momento in cui tutti cacciatorpedinieri sono stati affondati ma rimangono la corazzata o gli incrociatori.
 
-Guessing:
+Inferenza da k-cell:
 - `last_middle_distance_0_*` effettua la _guess_ della cella a fianco di `middle` quando al fianco opposto è presente un _last_. Dopodichè "copre" d'acqua le celle laterali.
 - `r_last_action_base` effettua la guess della cella adiacente ad una `k-cell` che contiene un pezzo di nave terminale.
 - `r_middle_border_*` si attiva in presenza di una `k-cell` contenente un `middle` ai bordi della mappa ed effettua la _guess_ delle celle adiacenti.
