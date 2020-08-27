@@ -131,9 +131,11 @@ Il terzo ed ultimo agente utilizza la strategia più sofisticata tra tutti.
 
 Divide il suo processo in due macrofasi:
 1. Ragionamento ed Inferenza (Certainty)
-    1. Riconoscimento navi
-    2. Inferenza da navi affondate
-    3. Gestione k-cell
+    1. Routine
+    2. Inferenza da k-per-*
+    3. Riconoscimento navi
+    4. Inferenza da navi affondate
+    5. Inferenza da k-cell
 2. Espansione della conoscenza (Uncertainty)
     1. Da k-cell
     2. Senza evidenze
@@ -158,6 +160,8 @@ Routine:
 - `action_to_do` interviene appena un fatto `cell_to_see` viene asserito ed effettua l'azione specificata sulla cella specificata.
 - `update_kcp` per ogni `k-cell` decrementa il `k-per-row` ed il `k-per-col`.
 - `water_cell` si attiva quando l'agente tratta una `k-cell` che contiene un pezzo di nave terminale o un sottomarino, e asserisce nuovi fatti `k-cell` con contenuto `water` attorno ad essa. I `middle` non vengono trattati in questa regola in quanto la loro gestione dipende da caso a caso e dal loro orientamento.
+
+Inferenza da k-per-*:
 - `zero_kp*` agisce quando una `k-per-*` è 0. Per ogni cella di quella riga/colonna il cui contenuto è sconosciuto, asserisce un nuovo fatto `k-cell` dal contenuto `water`.
 - `rest_available_*` interviene quando il numero di celle di una riga/colonna dal contenuto sconosciuto è uguale al valore di `k-per-*`; effettua una _guess_ per ciascuna di esse.
 
