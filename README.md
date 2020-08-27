@@ -195,7 +195,8 @@ Da k-cell:
 - `infer_middle_direction_with_probability` si attiva quando non si hanno altre conoscenze riguardo i vicini di un `middle`. Viene effettuata la _guess_ di una delle 4 celle adiacenti guardando le probabilità date da `k-per-row` e `k-per-col`.
 
 Senza evidenze:
-- `fire_most_prob`
+- `fire_most_prob` effettua una _fire_ sulla cella più probabile.
+- `guess_most_prob` effettua una _guess_ sulla cella più probabile.
 
 ### Funzioni
 Nonostante si sia cercato di ridurre al minimo il numero di funzioni, ne sono presenti alcune:
@@ -204,3 +205,4 @@ Nonostante si sia cercato di ridurre al minimo il numero di funzioni, ne sono pr
 - `next_action(?action ?x ?y ?content)` controlla se la cella sia valida e non sia una conosciuta. Dopodichè asserisce `cell_to_see` di modo che la regola `action_to_do` venga attivata e utilizza `water_around sulla cella specificata`.
 - `next_action_unknown(?action ?x ?x ?orientation)` ha lo stesso comportamento della precedente ma utilizza `water_around_unknown`.
 - `guess_rest(?type ?value ?n_available)` effettua la _guess_ delle `?n_available` celle nella `?value`esima `?type` (riga o colonna).
+- `most_prob_cell()` restituisce la cella che più probabilmente contiene un pezzo di nave, avvalendosi della conoscenza acquisita e della k-per-*.
