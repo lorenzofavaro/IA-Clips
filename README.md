@@ -209,3 +209,6 @@ Nonostante si sia cercato di ridurre al minimo il numero di funzioni, ne sono pr
 
 ### Limiti
 In base alla disposizione delle navi e dalla conoscenza iniziale l'agente performa in maniera diversa. Solitamente produce buoni risultati, tuttavia in alcuni casi, in assenza di celle conosciute fin dall'inizio può produrre risultati molto scadenti.
+
+
+## Risultati ottenuti
