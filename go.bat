@@ -1,7 +1,7 @@
 (load 0_Main.clp)
 (load 1_Env.clp)
 (load maps/2_map.clp)
-(load 2_Agent_2.clp)
+(load 2_Agent.clp)
 (reset)
 (set-break game-over)
 (run)

@@ -47,6 +47,17 @@
 	)
 )
 
+(defrule fire_best (declare (salience 5))
+	(status (step ?s) (currently running))
+	(cell_prob (x ?x) (y ?y) (val ?val))
+	?mvs <- (moves (fires ~0))
+=>
+	(bind ?max (find_max cell_prob greater_than))
+	(assert (exec (step ?s) (action fire) (x (fact-slot-value ?max x)) (y (fact-slot-value ?max y))))
+	(retract ?max)
+	(pop-focus)
+)
+
 
 (defrule guess_best
 	(status (step ?s) (currently running))
