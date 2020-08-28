@@ -212,3 +212,6 @@ In base alla disposizione delle navi e dalla conoscenza iniziale l'agente perfor
 
 
 ## Risultati ottenuti
+Sono stati effettuati numerosi test, trattando diverse mappe e affidando agli agenti diversa conoscenza iniziale sulle celle della mappa.
+
+#### Mappa 1
