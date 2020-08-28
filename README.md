@@ -214,7 +214,7 @@ In base alla disposizione delle navi e dalla conoscenza iniziale l'agente perfor
 ## Risultati ottenuti
 Sono stati effettuati numerosi test, trattando diverse mappe e affidando agli agenti diversa conoscenza iniziale sulle celle della mappa.
 
-#### Mappa 1
+### Mappa 1
 
 <p align="center">
   <img src="https://github.com/lorenzofavaro/IA-Clips/blob/master/maps/1_map.png"/>
@@ -222,7 +222,7 @@ Sono stati effettuati numerosi test, trattando diverse mappe e affidando agli ag
 
 <table><thead><tr><th></th><th>Agente 1</th><th>Agente 2</th><th>Agente 3</th></tr></thead><tbody><tr><td>Fire ok</td><td>0</td><td>2</td><td>4</td></tr><tr><td>Fire ko</td><td>0</td><td>3</td><td>1</td></tr><tr><td>Guess ok</td><td>8</td><td>2</td><td>10</td></tr><tr><td>Guess ko</td><td>11</td><td>0</td><td>4</td></tr><tr><td>Celle safe</td><td>10</td><td>14</td><td>4</td></tr><tr><td>Navi affondate</td><td>4</td><td>3</td><td>6</td></tr><tr><td colspan="4"></td></tr><tr><td>Punteggio</td><td>-125</td><td>-130</td><td>105</td></tr></tbody></table>
 
-#### Mappa 2
+### Mappa 2
 
 <p align="center">
   <img src="https://github.com/lorenzofavaro/IA-Clips/blob/master/maps/2_map.png"/>
