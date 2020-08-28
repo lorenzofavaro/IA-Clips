@@ -75,7 +75,7 @@ eventualmente averle colpite con _fire_.
 I restanti file sono stati creati dal professore per la gestione del gioco, tra cui `1_Env.clp` che gestisce l'ambiente di gioco e `0_Main.clp` che gestisce l'interscambio tra agente e ambiente.
 
 ## Agente 1
-Il primo agente adotta una strategia molto semplice. Utilizzando i dati del campo da gioco concessi dall'ambiente, e quindi il numero di pezzi di nave presenti per ogni riga e colonna (`k-per-row` e `k-per-col`), calcola le prime 20 celle più probabili ed effettua una _guess_. Non effettua alcuna _fire_ in quanto la penalità in caso di _miss_ sarebbe più alta.
+Il primo agente adotta una strategia molto semplice. Utilizzando i dati del campo da gioco concessi dall'ambiente, e quindi il numero di pezzi di nave presenti per ogni riga e colonna (`k-per-row` e `k-per-col`), calcola le prime 25 celle più probabili ed effettua una _fire_ delle prime 5, dopodichè 20 _guesses_ in ordine di probabilità.
 
 ### Conoscenza
 La conoscenza è stata modellata definendo `cell_prob` che misura la probabilità di trovare un pezzo di nave in una specifica cella. Viene asserito un nuovo fatto ordinato per tutte le celle.
@@ -83,6 +83,7 @@ La conoscenza è stata modellata definendo `cell_prob` che misura la probabilit�
 ### Regole di expertise
 Le regole di expertise importanti sono due:
 - `calc_cell_values` calcola per ogni cella di gioco, la probabilità che contenga un pezzo di nave.
+- `fire_best` utilizza la `cell_prob` di maggior valore e ne effettua la _fire_.
 - `guess_best` utilizza la `cell_prob` di maggior valore e ne effettua la _guess_.
 
 ### Funzioni
