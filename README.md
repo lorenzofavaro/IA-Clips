@@ -69,7 +69,7 @@ eventualmente averle colpite con _fire_.
 ## Struttura del progetto
 - `battlemap` contiene tutto il necessario per la generazione di mappe da gioco.
 - `utils` contiene le strategie utilizzate dai tre agenti ed anche alcuni file secondari.
-- `maps` contiene tutte le mappe generate ed utilizzate per il testing degli agenti
+- `maps` contiene tutte le mappe generate ed utilizzate per il testing degli agenti.
 - Sono stati modellati 3 agenti, differenti per il grado di complessità della strategia da loro utilizzata: `2_Agent.clp`, `2_Agent_1.clp` e `2_Agent_2.clp`.
 
 I restanti file sono stati creati dal professore per la gestione del gioco, tra cui `1_Env.clp` che gestisce l'ambiente di gioco e `0_Main.clp` che gestisce l'interscambio tra agente e ambiente.
