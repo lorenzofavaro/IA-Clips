@@ -27,7 +27,7 @@
 
 (defrule max_guesses
 	(status (step ?s) (currently running))
-	?mvs <- (moves (guesses 0))
+	(moves (guesses 0))
 =>
 	(assert (exec (step ?s) (action solve)))
 	(pop-focus)
@@ -50,7 +50,7 @@
 (defrule fire_best (declare (salience 5))
 	(status (step ?s) (currently running))
 	(cell_prob (x ?x) (y ?y) (val ?val))
-	?mvs <- (moves (fires ~0))
+	(moves (fires ~0))
 =>
 	(bind ?max (find_max cell_prob greater_than))
 	(assert (exec (step ?s) (action fire) (x (fact-slot-value ?max x)) (y (fact-slot-value ?max y))))
