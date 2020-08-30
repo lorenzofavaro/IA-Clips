@@ -228,7 +228,7 @@ Sono stati effettuati numerosi test, trattando diverse mappe e affidando agli ag
   <img src="https://github.com/lorenzofavaro/IA-Clips/blob/master/maps/2_map.png"/>
 </p>
 
-<table><thead><tr><th></th><th>Agente 1</th><th>Agente 2</th><th>Agente 3</th></tr></thead><tbody><tr><td>Fire ok</td><td>4</td><td>4</td><td>4</td></tr><tr><td>Fire ko</td><td>1</td><td>1</td><td>1</td></tr><tr><td>Guess ok</td><td>10</td><td>4</td><td>14</td></tr><tr><td>Guess ko</td><td>9</td><td>0</td><td>0</td></tr><tr><td>Celle safe</td><td>4</td><td>10</td><td>0</td></tr><tr><td>Navi affondate</td><td>6</td><td>4</td><td>10</td></tr><tr><td colspan="4"></td></tr><tr><td>Punteggio</td><td>30</td><td>15</td><td>305</td></tr></tbody></table>
+<table><thead><tr><th></th><th>Agente 1</th><th>Agente 2</th><th>Agente 3</th></tr></thead><tbody><tr><td>Fire ok</td><td>4</td><td>4</td><td>4</td></tr><tr><td>Fire ko</td><td>1</td><td>1</td><td>1</td></tr><tr><td>Guess ok</td><td>10</td><td>4</td><td>14</td></tr><tr><td>Guess ko</td><td>10</td><td>0</td><td>0</td></tr><tr><td>Celle safe</td><td>4</td><td>10</td><td>0</td></tr><tr><td>Navi affondate</td><td>6</td><td>4</td><td>10</td></tr><tr><td colspan="4"></td></tr><tr><td>Punteggio</td><td>30</td><td>15</td><td>305</td></tr></tbody></table>
 
 
 ### Mappa 3
@@ -245,7 +245,7 @@ Sono stati effettuati numerosi test, trattando diverse mappe e affidando agli ag
   <img src="https://github.com/lorenzofavaro/IA-Clips/blob/master/maps/3_map_1.png"/>
 </p>
 
-<table><thead><tr><th></th><th>Agente 1</th><th>Agente 2</th><th>Agente 3</th></tr></thead><tbody><tr><td>Fire ok</td><td>4</td><td>3</td><td>4</td></tr><tr><td>Fire ko</td><td>1</td><td>2</td><td>1</td></tr><tr><td>Guess ok</td><td>11</td><td>4</td><td>14</td></tr><tr><td>Guess ko</td><td>8</td><td>0</td><td>3</td></tr><tr><td>Celle safe</td><td>6</td><td>14<br></td><td>3</td></tr><tr><td>Navi affondate</td><td>7</td><td>3</td><td>8</td></tr><tr><td colspan="4"></td></tr><tr><td>Punteggio</td><td>50</td><td>-75</td><td>200</td></tr></tbody></table>
+<table><thead><tr><th></th><th>Agente 1</th><th>Agente 2</th><th>Agente 3</th></tr></thead><tbody><tr><td>Fire ok</td><td>4</td><td>3</td><td>4</td></tr><tr><td>Fire ko</td><td>1</td><td>2</td><td>1</td></tr><tr><td>Guess ok</td><td>11</td><td>4</td><td>14</td></tr><tr><td>Guess ko</td><td>9</td><td>0</td><td>3</td></tr><tr><td>Celle safe</td><td>6</td><td>14<br></td><td>3</td></tr><tr><td>Navi affondate</td><td>7</td><td>3</td><td>8</td></tr><tr><td colspan="4"></td></tr><tr><td>Punteggio</td><td>50</td><td>-75</td><td>200</td></tr></tbody></table>
 
 
 ### Mappa 3 versione 2
