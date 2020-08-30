@@ -141,7 +141,7 @@
 
 ; ________________ RULES ________________
 
-(defrule out_of_fires
+(defrule out_of_fires (declare (salience 5))
 	(status (step ?s) (currently running))
 	(moves (fires ?nf&:(eq ?nf 0)))
 =>
@@ -421,7 +421,6 @@
 (defrule unknown (declare (salience -5))
 	(status (step ?s) (currently running))
 	(cell_prob (x ?x) (y ?y) (val ?val))
-	(moves (fires ?nf))
 =>
 	(bind ?max (find_max greater_than))
 	(assert (exec (step ?s) (action fire) (x (fact-slot-value ?max x)) (y (fact-slot-value ?max y))))
