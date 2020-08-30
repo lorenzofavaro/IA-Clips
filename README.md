@@ -262,3 +262,5 @@ Sono stati effettuati numerosi test, trattando diverse mappe e affidando agli ag
 <p align="center">
   <img src="https://github.com/lorenzofavaro/IA-Clips/blob/master/maps/3_map_3.png"/>
 </p>
+
+<table><thead><tr><th></th><th>Agente 1</th><th>Agente 2</th><th>Agente 3</th></tr></thead><tbody><tr><td>Fire ok</td><td>3</td><td>3</td><td>3</td></tr><tr><td>Fire ko</td><td>2</td><td>2</td><td>2</td></tr><tr><td>Guess ok</td><td>11</td><td>4</td><td>15</td></tr><tr><td>Guess ko</td><td>9<br></td><td>0</td><td>2</td></tr><tr><td>Celle safe</td><td>6</td><td>13</td><td>2</td></tr><tr><td>Navi affondate</td><td>7</td><td>3</td><td>9</td></tr><tr><td colspan="4"></td></tr><tr><td>Punteggio</td><td>40</td><td>-65</td><td>215</td></tr></tbody></table>
