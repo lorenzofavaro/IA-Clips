@@ -236,4 +236,13 @@ Sono stati effettuati numerosi test, trattando diverse mappe e affidando agli ag
 <p align="center">
   <img src="https://github.com/lorenzofavaro/IA-Clips/blob/master/maps/3_map.png"/>
 </p>
+
 <table><thead><tr><th></th><th>Agente 1</th><th>Agente 2</th><th>Agente 3</th></tr></thead><tbody><tr><td>Fire ok</td><td>4</td><td>2</td><td>4</td></tr><tr><td>Fire ko</td><td>1</td><td>3</td><td>1</td></tr><tr><td>Guess ok</td><td>12</td><td>2</td><td>13</td></tr><tr><td>Guess ko</td><td>8</td><td>0</td><td>4</td></tr><tr><td>Celle safe</td><td>5</td><td>17</td><td>4</td></tr><tr><td>Navi affondate</td><td>8</td><td>2</td><td>7</td></tr><tr><td colspan="4"></td></tr><tr><td>Punteggio</td><td>85</td><td>-175</td><td>150</td></tr></tbody></table>
+
+### Mappa 3 versione 1
+
+<p align="center">
+  <img src="https://github.com/lorenzofavaro/IA-Clips/blob/master/maps/3_map_1.png"/>
+</p>
+
+<table><thead><tr><th></th><th>Agente 1</th><th>Agente 2</th><th>Agente 3</th></tr></thead><tbody><tr><td>Fire ok</td><td>4</td><td>3</td><td>4</td></tr><tr><td>Fire ko</td><td>1</td><td>2</td><td>1</td></tr><tr><td>Guess ok</td><td>11</td><td>4</td><td>14</td></tr><tr><td>Guess ko</td><td>8</td><td>0</td><td>3</td></tr><tr><td>Celle safe</td><td>6</td><td>14<br></td><td>3</td></tr><tr><td>Navi affondate</td><td>7</td><td>3</td><td>8</td></tr><tr><td colspan="4"></td></tr><tr><td>Punteggio</td><td>50</td><td>-75</td><td>200</td></tr></tbody></table>
